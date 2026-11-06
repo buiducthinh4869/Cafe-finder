@@ -290,11 +290,10 @@
   function renderList() {
     const { rows, origin, range, weights, needArea } = rank();
     const list = $("#list");
-    renderMap(rows.slice(0, 8), origin);
     if (needArea) {
-      list.replaceChildren(el("p", { class: "empty" }, "Gõ tên khu vực ở trên, ví dụ Cầu Giấy hoặc Times City, hoặc dùng vị trí hiện tại."));
+      list.replaceChildren(el("p", { class: "empty" }, el("img", { src: "cat.svg", alt: "" }), "Gõ tên khu vực ở trên, ví dụ Cầu Giấy hoặc Times City, hoặc dùng vị trí hiện tại."));
     } else if (!rows.length) {
-      list.replaceChildren(el("p", { class: "empty" }, "Không có quán nào trong phạm vi này. Thử kéo bán kính rộng hơn."));
+      list.replaceChildren(el("p", { class: "empty" }, el("img", { src: "cat.svg", alt: "" }), "Không có quán nào trong phạm vi này. Thử kéo bán kính rộng hơn."));
     } else {
       const cards = rows.map((c, i) => card(c, i, origin));
       const m = MODES[state.mode];
@@ -374,42 +373,6 @@
         `Feedback hai bạn chấm cao làm tăng trọng số đặc điểm của quán đó, chấm thấp thì giảm. Đã có ${n} feedback.`),
       el("table", { class: "weights" }, el("tbody", {}, rowsW))
     );
-  }
-
-  // ---------- bản đồ ----------
-  let map = null, layer = null;
-  function renderMap(rows, origin) {
-    if (!window.L) { $(".map-wrap").hidden = true; return; }
-    if (!map) {
-      map = L.map("map", { zoomControl: false, attributionControl: true, scrollWheelZoom: false });
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-        maxZoom: 19, subdomains: "abcd",
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
-      }).addTo(map);
-      L.control.zoom({ position: "bottomright" }).addTo(map);
-      layer = L.layerGroup().addTo(map);
-    }
-    layer.clearLayers();
-    const pts = [];
-    if (origin) {
-      L.marker([origin.lat, origin.lng], { icon: L.divIcon({ className: "", html: '<div class="pin-origin"></div>', iconSize: [18, 18] }), title: origin.name, zIndexOffset: 1000 }).addTo(layer);
-      pts.push([origin.lat, origin.lng]);
-    }
-    rows.forEach((c, i) => {
-      const m = L.marker([c.lat, c.lng], {
-        icon: L.divIcon({ className: "", html: `<div class="pin${i < 3 ? " top" : ""}">${i + 1}</div>`, iconSize: i < 3 ? [28, 28] : [22, 22] }),
-        title: c.name, zIndexOffset: 500 - i
-      }).addTo(layer);
-      m.on("click", () => {
-        const card = document.getElementById("c-" + c.id);
-        if (card) { card.scrollIntoView({ behavior: "smooth", block: "center" }); card.classList.add("flash"); setTimeout(() => card.classList.remove("flash"), 1200); }
-      });
-      pts.push([c.lat, c.lng]);
-    });
-    if (pts.length > 1) map.fitBounds(pts, { padding: [28, 28], maxZoom: 15 });
-    else if (pts.length === 1) map.setView(pts[0], 14);
-    else map.setView([21.03, 105.83], 12);
-    setTimeout(() => map.invalidateSize(), 50);
   }
 
   // ---------- chọn khu vực ----------
