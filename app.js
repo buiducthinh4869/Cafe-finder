@@ -42,7 +42,50 @@
   const MODES = {
     hotay:    { origin: "hotay",    near: true, min: 1, max: 8,  step: 0.5, def: 4 },
     chualang: { origin: "chualang", near: true, min: 1, max: 8,  step: 0.5, def: 4 },
+    khac:     { origin: "custom",   near: true, min: 1, max: 10, step: 0.5, def: 3 },
     xa:       { origin: null,       near: false, min: 15, max: 45, step: 5, def: 40, floor: 10 }
+  };
+
+  // Khu vực gõ nhanh, dùng được cả khi không có mạng tra địa chỉ.
+  const AREAS = [
+    ["Cầu Giấy", 21.0333, 105.7940], ["Duy Tân", 21.0310, 105.7830], ["Trần Quốc Vượng", 21.0345, 105.7840],
+    ["Đống Đa", 21.0170, 105.8250], ["Thái Hà", 21.0125, 105.8200], ["Láng Hạ", 21.0150, 105.8140],
+    ["Ba Đình", 21.0340, 105.8140], ["Kim Mã", 21.0315, 105.8180], ["Ngọc Khánh", 21.0270, 105.8130],
+    ["Hoàn Kiếm", 21.0285, 105.8525], ["Hồ Gươm", 21.0288, 105.8520], ["Phố cổ", 21.0340, 105.8500],
+    ["Hai Bà Trưng", 21.0090, 105.8560], ["Times City", 20.9955, 105.8680], ["Bạch Mai", 21.0010, 105.8500],
+    ["Thanh Xuân", 20.9940, 105.8100], ["Royal City", 21.0030, 105.8150], ["Ngã Tư Sở", 21.0030, 105.8200],
+    ["Hoàng Mai", 20.9760, 105.8600], ["Linh Đàm", 20.9650, 105.8280],
+    ["Nam Từ Liêm", 21.0120, 105.7650], ["Mỹ Đình", 21.0280, 105.7720], ["Bắc Từ Liêm", 21.0700, 105.7650],
+    ["Hà Đông", 20.9710, 105.7790], ["Long Biên", 21.0360, 105.8880], ["Gia Lâm", 21.0170, 105.9380],
+    ["Tây Hồ", 21.0700, 105.8200], ["Xuân Diệu", 21.0610, 105.8300], ["Lạc Long Quân", 21.0600, 105.8100],
+    ["Chùa Láng", 21.0235, 105.8065], ["Nguyễn Chí Thanh", 21.0230, 105.8100],
+    ["Ecopark", 20.9530, 105.9400], ["Đông Anh", 21.1360, 105.8480], ["Sóc Sơn", 21.2550, 105.8300],
+    ["Hòa Lạc", 21.0100, 105.5300], ["Thạch Thất", 21.0500, 105.5700]
+  ];
+  const fold = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").trim();
+
+  // Icon nét mảnh cho đặc điểm quán.
+  const P = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+  const ICONS = {
+    rong: P('<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>'),
+    vang: P('<path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/>'),
+    ban_rong: P('<rect x="2" y="7" width="20" height="4" rx="1"/><path d="M5 11v8M19 11v8"/>'),
+    coworking: P('<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/>'),
+    view_ho: P('<path d="M2 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><circle cx="17" cy="6" r="2"/>'),
+    o_dien: P('<path d="M12 22v-5M9 8V2M15 8V2M18 8v5a6 6 0 0 1-12 0V8z"/>'),
+    wifi: P('<path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r=".5"/>'),
+    dieu_hoa: P('<path d="M12 2v20M4.9 4.9l14.2 14.2M2 12h20M4.9 19.1 19.1 4.9"/>'),
+    do_uong: P('<path d="M17 8h1a4 4 0 0 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/>'),
+    ngoai_troi: P('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2"/>'),
+    dong: P('<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 4a3 3 0 0 1 0 6M21 20a6 6 0 0 0-4-5.6"/>'),
+    ban_chat: P('<path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/>'),
+    mat_duong: P('<path d="M4 19 8 5M20 19 16 5M12 6v2M12 11v2M12 16v2"/>'),
+    wifi_yeu: P('<path d="M2 2l20 20M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r=".5"/>'),
+    nong: P('<path d="M14 14.8V4a2 2 0 0 0-4 0v10.8a4 4 0 1 0 4 0z"/>'),
+    do_uong_do: P('<path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4zM2 2l20 20"/>'),
+    pin: P('<path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/>'),
+    clock: P('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
+    star: P('<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>')
   };
 
   const LS = {
@@ -58,6 +101,7 @@
     mode: LS.get("cf_mode", "hotay"),
     origin: LS.get("cf_origin", "hotay"),
     ranges: LS.get("cf_ranges", {}),
+    custom: LS.get("cf_custom", null),
     openNow: false, onlyNew: false, showHidden: false,
     remoteOk: false
   };
@@ -193,7 +237,8 @@
   function rank() {
     const m = MODES[state.mode];
     const originKey = m.origin || state.origin;
-    const origin = ORIGINS[originKey];
+    const origin = originKey === "custom" ? state.custom : ORIGINS[originKey];
+    if (!origin) return { rows: [], origin: null, range: 0, weights: learnedWeights(cafeSignals()), needArea: true };
     const range = state.ranges[state.mode] || m.def;
     const signals = cafeSignals();
     const weights = learnedWeights(signals);
@@ -226,6 +271,8 @@
     $("#rangeLabel").textContent = m.near ? "Bán kính" : "Xa tối đa";
     $("#rangeOut").textContent = fmtKm(+r.value);
     $("#originRow").hidden = m.near;
+    $("#areaRow").hidden = state.mode !== "khac";
+    $("#khacSub").textContent = state.custom ? state.custom.name : "gõ tên khu vực";
     document.querySelectorAll("#originSeg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.origin === state.origin)));
   }
 
@@ -241,12 +288,18 @@
   }
 
   function renderList() {
-    const { rows, origin, range, weights } = rank();
+    const { rows, origin, range, weights, needArea } = rank();
     const list = $("#list");
-    if (!rows.length) {
+    renderMap(rows.slice(0, 8), origin);
+    if (needArea) {
+      list.replaceChildren(el("p", { class: "empty" }, "Gõ tên khu vực ở trên, ví dụ Cầu Giấy hoặc Times City, hoặc dùng vị trí hiện tại."));
+    } else if (!rows.length) {
       list.replaceChildren(el("p", { class: "empty" }, "Không có quán nào trong phạm vi này. Thử kéo bán kính rộng hơn."));
     } else {
-      list.replaceChildren(...rows.map((c, i) => card(c, i, origin)));
+      const cards = rows.map((c, i) => card(c, i, origin));
+      const m = MODES[state.mode];
+      if (m.near && rows.length < 4 && range < m.max) cards.unshift(el("p", { class: "hint" }, `Chỉ có ${rows.length} quán trong ${fmtKm(range)}. Kéo bán kính rộng hơn để xem thêm.`));
+      list.replaceChildren(...cards);
     }
     renderModel(weights);
   }
@@ -260,20 +313,29 @@
     if (open === false) badges.push(el("span", { class: "badge warn" }, "Đã đóng"));
     for (const k of c.feats) {
       const w = FEATURES[k] ? FEATURES[k].w : 0;
-      badges.push(el("span", { class: "badge " + (w < 0 ? "warn" : "good") }, FEATURES[k] ? FEATURES[k].label : k));
+      const b = el("span", { class: "badge " + (w < 0 ? "warn" : "good") });
+      b.innerHTML = (ICONS[k] || "") + "<span></span>";
+      b.lastChild.textContent = FEATURES[k] ? FEATURES[k].label : k;
+      badges.push(b);
     }
     const scoreShown = Math.round(clamp(c.score, 0, 1) * 100);
     const dir = `https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lng}&destination_place_id=${c.id}`;
     const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.name)}&query_place_id=${c.id}`;
 
     const fbs = c.sig ? c.sig.notes.slice(-3) : [];
-    return el("article", { class: "card" + (c.sig && c.sig.hide ? " hidden-cafe" : "") },
+    const strip = el("div", { class: "card-strip" });
+    strip.innerHTML = `<span>${ICONS.pin}<b></b></span><span>${ICONS.clock}<i></i></span><span>${ICONS.star}<em></em></span>`;
+    strip.querySelector("b").textContent = fmtKm(c.km);
+    strip.querySelector("i").textContent = c.hours || "chưa rõ giờ";
+    strip.querySelector("em").textContent = String(c.rating).replace(".", ",") + " · " + c.reviews;
+    strip.querySelectorAll("b,i,em").forEach(n => { n.style.fontStyle = "normal"; n.style.fontWeight = "500"; });
+    return el("article", { class: "card" + (c.sig && c.sig.hide ? " hidden-cafe" : ""), id: "c-" + c.id },
       el("div", { class: "card-head" },
         el("div", { class: "rank" }, String(i + 1)),
         el("div", { class: "card-title" },
           el("h3", {}, c.name),
-          el("div", { class: "meta" }, `${c.area} · ${fmtKm(c.km)} từ ${origin.name} · ${c.hours || "chưa rõ giờ"}`),
-          el("div", { class: "meta" }, `Google ${String(c.rating).replace(".", ",")}★ (${c.reviews} đánh giá)`)
+          el("div", { class: "meta" }, `${c.area} · cách ${origin.name}`),
+          strip
         ),
         el("div", { class: "score" }, el("b", {}, String(scoreShown)), el("small", {}, "điểm hợp"))
       ),
@@ -312,6 +374,73 @@
         `Feedback hai bạn chấm cao làm tăng trọng số đặc điểm của quán đó, chấm thấp thì giảm. Đã có ${n} feedback.`),
       el("table", { class: "weights" }, el("tbody", {}, rowsW))
     );
+  }
+
+  // ---------- bản đồ ----------
+  let map = null, layer = null;
+  function renderMap(rows, origin) {
+    if (!window.L) { $(".map-wrap").hidden = true; return; }
+    if (!map) {
+      map = L.map("map", { zoomControl: false, attributionControl: true, scrollWheelZoom: false });
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+        maxZoom: 19, subdomains: "abcd",
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
+      }).addTo(map);
+      L.control.zoom({ position: "bottomright" }).addTo(map);
+      layer = L.layerGroup().addTo(map);
+    }
+    layer.clearLayers();
+    const pts = [];
+    if (origin) {
+      L.marker([origin.lat, origin.lng], { icon: L.divIcon({ className: "", html: '<div class="pin-origin"></div>', iconSize: [18, 18] }), title: origin.name, zIndexOffset: 1000 }).addTo(layer);
+      pts.push([origin.lat, origin.lng]);
+    }
+    rows.forEach((c, i) => {
+      const m = L.marker([c.lat, c.lng], {
+        icon: L.divIcon({ className: "", html: `<div class="pin${i < 3 ? " top" : ""}">${i + 1}</div>`, iconSize: i < 3 ? [28, 28] : [22, 22] }),
+        title: c.name, zIndexOffset: 500 - i
+      }).addTo(layer);
+      m.on("click", () => {
+        const card = document.getElementById("c-" + c.id);
+        if (card) { card.scrollIntoView({ behavior: "smooth", block: "center" }); card.classList.add("flash"); setTimeout(() => card.classList.remove("flash"), 1200); }
+      });
+      pts.push([c.lat, c.lng]);
+    });
+    if (pts.length > 1) map.fitBounds(pts, { padding: [28, 28], maxZoom: 15 });
+    else if (pts.length === 1) map.setView(pts[0], 14);
+    else map.setView([21.03, 105.83], 12);
+    setTimeout(() => map.invalidateSize(), 50);
+  }
+
+  // ---------- chọn khu vực ----------
+  function setCustom(name, lat, lng) {
+    state.custom = { name, lat: +lat, lng: +lng };
+    LS.set("cf_custom", state.custom);
+    $("#areaResults").replaceChildren();
+    $("#areaInput").value = "";
+    renderControls(); renderList();
+  }
+  function areaChoices(items) {
+    const box = $("#areaResults");
+    if (!items.length) { box.replaceChildren(el("p", { class: "muted" }, "Không tìm thấy địa điểm này ở Hà Nội. Thử gõ cụ thể hơn.")); return; }
+    box.replaceChildren(...items.slice(0, 5).map(it => el("button", { type: "button", onclick: () => setCustom(it.name, it.lat, it.lng) }, it.label || it.name)));
+  }
+  async function searchArea(q) {
+    const f = fold(q);
+    const local = AREAS.filter(a => fold(a[0]).includes(f) || f.includes(fold(a[0])));
+    if (local.length === 1 && fold(local[0][0]) === f) { setCustom(local[0][0], local[0][1], local[0][2]); return; }
+    const items = local.map(a => ({ name: a[0], lat: a[1], lng: a[2], label: a[0] }));
+    $("#areaResults").replaceChildren(el("p", { class: "muted" }, "Đang tìm…"));
+    try {
+      const url = "https://nominatim.openstreetmap.org/search?format=json&limit=5&countrycodes=vn&bounded=1&viewbox=105.3,21.45,106.1,20.75&accept-language=vi&q=" + encodeURIComponent(q + ", Hà Nội");
+      const res = await fetch(url);
+      const data = await res.json();
+      for (const d of data) {
+        const label = d.display_name.split(",").slice(0, 3).join(",");
+        items.push({ name: d.display_name.split(",")[0], lat: d.lat, lng: d.lon, label });
+      }
+    } catch (e) { /* dùng danh sách có sẵn */ }
+    areaChoices(items);
   }
 
   function renderSync() {
@@ -422,6 +551,20 @@
     document.querySelectorAll("#originSeg button").forEach(b => b.addEventListener("click", () => {
       state.origin = b.dataset.origin; LS.set("cf_origin", state.origin); renderControls(); renderList();
     }));
+    $("#areaForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const q = $("#areaInput").value.trim();
+      if (q) searchArea(q);
+    });
+    $("#geoBtn").addEventListener("click", () => {
+      if (!navigator.geolocation) { toast("Trình duyệt không hỗ trợ định vị."); return; }
+      toast("Đang lấy vị trí…");
+      navigator.geolocation.getCurrentPosition(
+        p => setCustom("Vị trí của bạn", p.coords.latitude, p.coords.longitude),
+        () => toast("Không lấy được vị trí. Hãy cho phép truy cập vị trí hoặc gõ tên khu vực."),
+        { enableHighAccuracy: true, timeout: 10000 }
+      );
+    });
     $("#openNow").addEventListener("change", e => { state.openNow = e.target.checked; renderList(); });
     $("#onlyNew").addEventListener("change", e => { state.onlyNew = e.target.checked; renderList(); });
     $("#showHidden").addEventListener("change", e => { state.showHidden = e.target.checked; renderList(); });

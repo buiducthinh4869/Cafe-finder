@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
 </head>
@@ -28,17 +29,34 @@
     <section class="controls" aria-label="Chọn bối cảnh">
       <div class="modes" id="modes" role="tablist">
         <button class="mode" data-mode="hotay" role="tab">
+          <span class="mode-ico" aria-hidden="true">🏠</span>
           <span class="mode-title">Gần Hồ Tây</span>
           <span class="mode-sub">quanh nhà</span>
         </button>
         <button class="mode" data-mode="chualang" role="tab">
+          <span class="mode-ico" aria-hidden="true">💛</span>
           <span class="mode-title">Gần Chùa Láng</span>
           <span class="mode-sub">gần bạn ấy</span>
         </button>
-        <button class="mode" data-mode="xa" role="tab">
-          <span class="mode-title">Xa hẳn</span>
-          <span class="mode-sub">đổi gió 10–40 km</span>
+        <button class="mode" data-mode="khac" role="tab">
+          <span class="mode-ico" aria-hidden="true">📍</span>
+          <span class="mode-title">Khu khác</span>
+          <span class="mode-sub" id="khacSub">gõ tên khu vực</span>
         </button>
+        <button class="mode" data-mode="xa" role="tab">
+          <span class="mode-ico" aria-hidden="true">🌿</span>
+          <span class="mode-title">Xa hẳn</span>
+          <span class="mode-sub">đổi gió 10–45 km</span>
+        </button>
+      </div>
+
+      <div class="area" id="areaRow" hidden>
+        <form id="areaForm" class="area-form">
+          <input id="areaInput" placeholder="Ví dụ: Cầu Giấy, Times City, 22 Láng Hạ" autocomplete="off">
+          <button class="btn primary" type="submit">Tìm</button>
+        </form>
+        <button class="link" id="geoBtn" type="button">Dùng vị trí hiện tại của tôi</button>
+        <div class="area-results" id="areaResults"></div>
       </div>
 
       <div class="range-row" id="rangeRow">
@@ -59,6 +77,8 @@
         <label class="chk"><input type="checkbox" id="showHidden"> Hiện quán đã ẩn</label>
       </div>
     </section>
+
+    <div class="map-wrap"><div id="map" aria-label="Bản đồ các quán gợi ý"></div></div>
 
     <div class="sync" id="syncBar"></div>
 
@@ -105,6 +125,7 @@
 
   <div class="toast" id="toast" role="status"></div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="config.js"></script>
   <script src="app.js"></script>
 </body>

@@ -1179,6 +1179,366 @@
    "myScore": 7.5,
    "myNote": "Giá 40–60k. 2 tầng, khu đô thị vắng, hợp đi cuối tuần để làm việc.",
    "source": "sheet"
+  },
+  {
+   "id": "ChIJfQ_YPACrNTERD4H7ezgoDUk",
+   "name": "On Time Cầu Giấy",
+   "area": "Cầu Giấy",
+   "address": "2 Ng. 16 Phan Văn Trường",
+   "lat": 21.0407721,
+   "lng": 105.7863277,
+   "rating": 4.8,
+   "reviews": 129,
+   "hours": "Mở 24h",
+   "phone": "",
+   "work": 5,
+   "tags": [
+    "study space",
+    "yên tĩnh",
+    "điều hòa",
+    "máy lọc không khí",
+    "có phòng học"
+   ],
+   "note": "Study space đúng nghĩa, nhân viên nhắc khách giữ yên lặng. Mở 24h.",
+   "features": [
+    "coworking",
+    "vang",
+    "dieu_hoa"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJ2ya9BaKrNTERCqO6uISmM2A",
+   "name": "ALL9 cafe",
+   "area": "Cầu Giấy (Duy Tân)",
+   "address": "16 ngách 3 ngõ 78 Duy Tân",
+   "lat": 21.0328085,
+   "lng": 105.7827294,
+   "rating": 4.9,
+   "reviews": 114,
+   "hours": "7:00–23:00",
+   "phone": "0347 977 007",
+   "work": 5,
+   "tags": [
+    "co-working",
+    "yên tĩnh",
+    "phòng họp riêng",
+    "trong ngõ"
+   ],
+   "note": "Co-working trong ngõ, nhiều review nhắc yên tĩnh để tập trung. Có phòng riêng cho làm việc nhóm.",
+   "features": [
+    "coworking",
+    "vang"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJ10pJ4H2rNTERNMgnCZfcCVY",
+   "name": "Sol Cafe & Coworking",
+   "area": "Cầu Giấy (Trần Quốc Vượng)",
+   "address": "Tầng 1 tòa C Hà Nội Paragon, 181 Trần Quốc Vượng",
+   "lat": 21.0342211,
+   "lng": 105.7820812,
+   "rating": 4.9,
+   "reviews": 630,
+   "hours": "7:00–22:00",
+   "phone": "0945 896 666",
+   "work": 4,
+   "tags": [
+    "coworking",
+    "rộng",
+    "sạch",
+    "nhân viên nói tiếng Anh"
+   ],
+   "note": "Rộng, sạch, hợp làm việc. Có review phàn nàn buổi sáng có trẻ em và tiếng ồn bi-a.",
+   "features": [
+    "coworking",
+    "rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJuf9FY-qrNTERJ7C2tmntHhg",
+   "name": "Le Doux Coffee - Cầu Giấy",
+   "area": "Cầu Giấy",
+   "address": "10 Ng. 16 Nguyễn Văn Huyên",
+   "lat": 21.0364159,
+   "lng": 105.7968762,
+   "rating": 4.6,
+   "reviews": 123,
+   "hours": "8:00–23:00",
+   "phone": "0866 989 697",
+   "work": 4,
+   "tags": [
+    "bàn ghế xếp thưa",
+    "khu làm việc riêng",
+    "tầng 2",
+    "xa tiếng xe"
+   ],
+   "note": "Bàn ghế xếp rộng rãi, có khu làm việc riêng ở tầng 2. Gần Miên Coffee.",
+   "features": [
+    "rong",
+    "ban_rong",
+    "vang"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJN2pyKQCtNTERHUcjTmMX4d4",
+   "name": "Study-ik Coworking Books Coffee",
+   "area": "Yên Hòa (Trần Duy Hưng)",
+   "address": "Tầng 3, 73 Trần Duy Hưng",
+   "lat": 21.0115342,
+   "lng": 105.8009977,
+   "rating": 4.5,
+   "reviews": 315,
+   "hours": "8:00–1:00 sáng",
+   "phone": "0326 234 756",
+   "work": 4,
+   "tags": [
+    "coworking",
+    "booth riêng",
+    "bàn lớn cho nhóm",
+    "mở khuya"
+   ],
+   "note": "Có booth riêng và bàn lớn. Có review chê đồ uống ngọt và mùi da ghế.",
+   "features": [
+    "coworking",
+    "ban_rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJ797omCarNTERxC-dbv97qhs",
+   "name": "Bọt Cafe",
+   "area": "Nghĩa Đô (Cầu Giấy)",
+   "address": "8 ngách 34 ngõ 68 Cầu Giấy",
+   "lat": 21.0321215,
+   "lng": 105.8018952,
+   "rating": 4.9,
+   "reviews": 118,
+   "hours": "8:30–22:30",
+   "phone": "0984 008 925",
+   "work": 3,
+   "tags": [
+    "nhà cổ trong ngõ",
+    "yên tĩnh",
+    "nhiều phòng nhỏ"
+   ],
+   "note": "Rất yên, nhưng không gian kiểu phòng khách, hợp đọc tài liệu hơn mở máy cả ngày.",
+   "features": [
+    "vang"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJo0sWcNqtNTERwNX9MdYafAo",
+   "name": "Í Chà Coffee Thanh Xuân",
+   "area": "Thanh Xuân",
+   "address": "40 Ng. 12 Khuất Duy Tiến",
+   "lat": 20.9950284,
+   "lng": 105.8040691,
+   "rating": 4.8,
+   "reviews": 290,
+   "hours": "8:00–23:00",
+   "phone": "0383 134 012",
+   "work": 4,
+   "tags": [
+    "cuối ngõ",
+    "yên tĩnh",
+    "rộng thoáng",
+    "bàn đủ lớn cho 4 người"
+   ],
+   "note": "Nằm cuối ngõ nên rất yên. Không gian mở, bàn rộng.",
+   "features": [
+    "vang",
+    "rong",
+    "ban_rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJd0Y5bwAZNDEREYxTzH4Wk4g",
+   "name": "So Coffee Roaster",
+   "area": "Thanh Xuân",
+   "address": "107 Ngụy Như Kon Tum",
+   "lat": 21.0027678,
+   "lng": 105.8048898,
+   "rating": 4.9,
+   "reviews": 599,
+   "hours": "7:00–2:00 sáng",
+   "phone": "0704 929 969",
+   "work": 3,
+   "tags": [
+    "hợp làm việc",
+    "mở khuya",
+    "cà phê ngon"
+   ],
+   "note": "Review nhắc hợp làm việc, mở tới 2 giờ sáng. Ít thông tin về độ rộng.",
+   "features": [],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJJdScnC2tNTERIy4ttcyVouI",
+   "name": "Tinh Cafe",
+   "area": "Thanh Xuân (Quan Nhân)",
+   "address": "8 Ng. 178 Quan Nhân",
+   "lat": 21.0033846,
+   "lng": 105.8105874,
+   "rating": 4.4,
+   "reviews": 175,
+   "hours": "6:30–22:30",
+   "phone": "",
+   "work": 3,
+   "tags": [
+    "view hồ nhỏ",
+    "nhiều tầng",
+    "sân thượng"
+   ],
+   "note": "Nhiều tầng, view hồ nhỏ. Thiên về thư giãn, chọn tầng trên nếu làm việc.",
+   "features": [
+    "view_ho",
+    "rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJCb4cP2urNTERM99Auvsf_ic",
+   "name": "TOKA COFFEE",
+   "area": "Hai Bà Trưng (Thi Sách)",
+   "address": "36 Thi Sách",
+   "lat": 21.0159686,
+   "lng": 105.8540874,
+   "rating": 4.6,
+   "reviews": 716,
+   "hours": "8:00–23:00",
+   "phone": "0913 529 464",
+   "work": 4,
+   "tags": [
+    "bàn rất lớn",
+    "3 tầng",
+    "nhà sau yên",
+    "vườn"
+   ],
+   "note": "Bàn lớn, hợp học và làm việc. Ngồi nhà phía sau hoặc tầng trên để tránh tiếng xe.",
+   "features": [
+    "ban_rong",
+    "rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJz6oxndCrNTERpDfUfZ3DEp8",
+   "name": "Moss cafe",
+   "area": "Hai Bà Trưng",
+   "address": "10 Ngõ Thi Sách",
+   "lat": 21.0174021,
+   "lng": 105.8535634,
+   "rating": 5.0,
+   "reviews": 236,
+   "hours": "T2–T5 8:00–18:00; T6–CN 8:00–21:00",
+   "phone": "0346 759 252",
+   "work": 4,
+   "tags": [
+    "trong ngõ",
+    "điều hòa",
+    "nhiều ổ điện",
+    "nhạc nhẹ"
+   ],
+   "note": "Trong ngõ nên không ồn xe, có điều hòa và ổ điện. Quán nhỏ, đầu tuần đóng 18:00.",
+   "features": [
+    "vang",
+    "dieu_hoa",
+    "o_dien"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJrT29HgCrNTERkc_SuAOp8C8",
+   "name": "MONO Coffee Lab - Pasteur",
+   "area": "Hai Bà Trưng",
+   "address": "3 Nguyễn Huy Tự",
+   "lat": 21.0138978,
+   "lng": 105.8625498,
+   "rating": 4.6,
+   "reviews": 877,
+   "hours": "7:30–22:30",
+   "phone": "0896 568 088",
+   "work": 3,
+   "tags": [
+    "specialty coffee",
+    "nội thất gỗ",
+    "ngồi lâu được"
+   ],
+   "note": "Không gian ấm, ngồi laptop vài tiếng được. Cà phê specialty ngon.",
+   "features": [
+    "do_uong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJaTMG6b2rNTER8iBBB4Ctlr8",
+   "name": "Tranquil Books & Coffee",
+   "area": "Hoàn Kiếm (phố cổ)",
+   "address": "5 Nguyễn Quang Bích",
+   "lat": 21.0325127,
+   "lng": 105.845655,
+   "rating": 4.7,
+   "reviews": 2235,
+   "hours": "8:00–22:00 (T3 nghỉ)",
+   "phone": "0395 049 075",
+   "work": 3,
+   "tags": [
+    "nhiều sách",
+    "yên",
+    "nhiều chỗ ngồi",
+    "đông khách du lịch"
+   ],
+   "note": "Yên so với phố cổ, có hai cơ sở đối diện nhau. Đông khách du lịch, giá cao. Thứ Ba nghỉ.",
+   "features": [
+    "vang",
+    "dong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
   }
  ]
 }
