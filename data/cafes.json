@@ -1,0 +1,1184 @@
+{
+ "updated": "2026-11-06",
+ "cafes": [
+  {
+   "id": "ChIJ2zAtSyKrNTERCua8ALatGRE",
+   "name": "Con tàu ngầm Coworking Space & Café",
+   "area": "Tây Hồ",
+   "address": "14 Ng. 5 P. Từ Hoa, Tây Hồ",
+   "lat": 21.0574841,
+   "lng": 105.8324427,
+   "rating": 5.0,
+   "reviews": 49,
+   "hours": "8:00–19:00",
+   "phone": "0979 572 284",
+   "work": 5,
+   "tags": [
+    "coworking",
+    "bàn lớn",
+    "màn hình rời",
+    "wifi mạnh",
+    "điều hòa"
+   ],
+   "note": "Khu coworking tầng trên có bàn làm việc thật và màn hình cắm laptop. Có vé ngày, giảm giá đồ uống khi đặt chỗ. Đóng cửa 19:00.",
+   "features": [
+    "ban_rong",
+    "coworking",
+    "dieu_hoa",
+    "wifi"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJteR9mI-rNTERNwNufePfkiQ",
+   "name": "VM Study Café",
+   "area": "Tây Hồ",
+   "address": "Tầng 4, 5 Ng. 314 Lạc Long Quân, Tây Hồ",
+   "lat": 21.0628826,
+   "lng": 105.8098958,
+   "rating": 5.0,
+   "reviews": 356,
+   "hours": "9:00–22:00",
+   "phone": "0354 242 073",
+   "work": 5,
+   "tags": [
+    "chuyên học/làm việc",
+    "yên tĩnh",
+    "điều hòa",
+    "wifi ổn",
+    "view hồ",
+    "phòng riêng 6 người"
+   ],
+   "note": "Study café đúng nghĩa, nhiều review nhắc yên tĩnh để tập trung. Đồ uống 70–80k. Đến lúc mở cửa để vắng nhất.",
+   "features": [
+    "coworking",
+    "dieu_hoa",
+    "vang",
+    "view_ho",
+    "wifi"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJF2GEOACrNTERFqQbWTjLwxA",
+   "name": "Idea Station - Coffee & Workspace",
+   "area": "Ngọc Hà (Ba Đình)",
+   "address": "21 Ng. 283 P. Đội Cấn, Ngọc Hà",
+   "lat": 21.0364822,
+   "lng": 105.818967,
+   "rating": 5.0,
+   "reviews": 166,
+   "hours": "8:00–22:30",
+   "phone": "0916 674 744",
+   "work": 5,
+   "tags": [
+    "workspace",
+    "sân trong ngõ",
+    "không ồn xe",
+    "wifi ổn",
+    "tầng trên riêng tư"
+   ],
+   "note": "Nằm giữa Hồ Tây và Chùa Láng, hợp ngày hai người cùng làm. Thỉnh thoảng có workshop, xem Instagram quán trước.",
+   "features": [
+    "coworking",
+    "vang",
+    "wifi"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJtxj2LYirNTERaf0UkzVF_HU",
+   "name": "Kyushu Promotion Center (The Company)",
+   "area": "Vạn Phúc (Ba Đình)",
+   "address": "Villa A3, 73 P. Vạn Bảo, Ngọc Hà",
+   "lat": 21.0325907,
+   "lng": 105.8186254,
+   "rating": 4.9,
+   "reviews": 44,
+   "hours": "T2–T6 8:00–18:00; T7–CN 9:00–18:00",
+   "phone": "0941 414 649",
+   "work": 4,
+   "tags": [
+    "coworking trả phí",
+    "yên tĩnh",
+    "phòng nhóm 5–6 người"
+   ],
+   "note": "Coworking hiện đại, rất yên tĩnh. Chỗ ngồi mở ít, phòng riêng hợp khi cần trao đổi. Tính phí theo coworking, không phải quán cafe.",
+   "features": [
+    "coworking",
+    "vang"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJFVJ9BP-rNTERXTmm5VMltwY",
+   "name": "Level Café & Coworking",
+   "area": "Tây Hồ (Võ Chí Công)",
+   "address": "104-D5D Đ. Võ Chí Công, Tây Hồ",
+   "lat": 21.0733904,
+   "lng": 105.8108036,
+   "rating": 4.8,
+   "reviews": 83,
+   "hours": "T2–T7 6:30–18:00; CN 6:30–11:30",
+   "phone": "0977 544 603",
+   "work": 4,
+   "tags": [
+    "coworking",
+    "ngồi ngoài trời đẹp",
+    "mở sớm"
+   ],
+   "note": "Từng rất yên tĩnh, đông hơn từ khi Lotte Mall mở gần đó. Chủ nhật chỉ mở buổi sáng.",
+   "features": [
+    "coworking",
+    "dong",
+    "ngoai_troi"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJORiHG52rNTERbxQKoJWrErg",
+   "name": "Maison Marou Café Tây Hồ",
+   "area": "Tây Hồ (Xuân Diệu)",
+   "address": "64 Đ. Xuân Diệu, Tây Hồ",
+   "lat": 21.0620999,
+   "lng": 105.8307498,
+   "rating": 4.6,
+   "reviews": 358,
+   "hours": "8:00–22:00",
+   "phone": "1900 636996",
+   "work": 4,
+   "tags": [
+    "rộng",
+    "sạch",
+    "gửi xe dễ",
+    "view hồ"
+   ],
+   "note": "Review nhắc hợp remote work cả ngày. Giá cao hơn mặt bằng (đồ uống cacao, bánh).",
+   "features": [
+    "rong",
+    "view_ho"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJqVS08U6rNTERB46oU12Cegg",
+   "name": "Eastern and Oriental Tea House",
+   "area": "Tây Hồ (Quảng An)",
+   "address": "46 P. Quảng An, Tây Hồ",
+   "lat": 21.0613096,
+   "lng": 105.8279966,
+   "rating": 4.4,
+   "reviews": 1595,
+   "hours": "7:30–22:00",
+   "phone": "",
+   "work": 3,
+   "tags": [
+    "4 tầng",
+    "có đồ ăn",
+    "bánh ngon"
+   ],
+   "note": "Không gian yên ổn nhưng có hôm chỉ mở tầng 2 và kín chỗ. Dự phòng khi các quán trên hết chỗ.",
+   "features": [
+    "rong",
+    "dong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJM-s6U1-rNTERt2uhPLSnAhM",
+   "name": "Ta Cà Phê 2",
+   "area": "Hồng Hà (gần Hồ Tây)",
+   "address": "41 Phố Đường Hoa, Hồng Hà",
+   "lat": 21.0678929,
+   "lng": 105.8289096,
+   "rating": 4.9,
+   "reviews": 785,
+   "hours": "8:00–18:00",
+   "phone": "0329 007 154",
+   "work": 3,
+   "tags": [
+    "cà phê specialty",
+    "không gian rộng thoáng",
+    "chủ yếu ngoài trời"
+   ],
+   "note": "Cà phê ngon nhất nhóm theo review. Chỗ ngồi chủ yếu ngoài trời, hợp đọc tài liệu vài tiếng hơn chạy máy cả ngày.",
+   "features": [
+    "ngoai_troi",
+    "rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJx_nB4y6rNTER1jZUvuuGYYI",
+   "name": "Trạm Coworking Space",
+   "area": "Láng (Đống Đa)",
+   "address": "Tầng 3 tòa B&B, 60 Ng. 850 Đ. Láng",
+   "lat": 21.0200148,
+   "lng": 105.8030854,
+   "rating": 4.6,
+   "reviews": 116,
+   "hours": "8:00–23:30",
+   "phone": "0966 468 978",
+   "work": 5,
+   "tags": [
+    "ghế công thái học",
+    "đèn bàn và ổ điện từng bàn",
+    "bàn rộng",
+    "điều hòa",
+    "máy in",
+    "cho mượn giá laptop"
+   ],
+   "note": "Khớp tiêu chí nhất nhóm Chùa Láng. Đông từ khoảng 15:00, nên đến buổi sáng. Đồ uống từ 45k.",
+   "features": [
+    "ban_rong",
+    "dieu_hoa",
+    "dong",
+    "o_dien",
+    "rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJOczPpXWrNTERiDt4kSU6Rb8",
+   "name": "A&A - Coffee & Co-working Space",
+   "area": "Chùa Láng",
+   "address": "6A Ng. 121 Chùa Láng",
+   "lat": 21.0230473,
+   "lng": 105.8041598,
+   "rating": 4.9,
+   "reviews": 39,
+   "hours": "7:30–23:00",
+   "phone": "0966 612 868",
+   "work": 4,
+   "tags": [
+    "co-working",
+    "phòng trong yên tĩnh",
+    "bàn cao",
+    "nhiều ổ điện",
+    "giá rẻ"
+   ],
+   "note": "Ngồi phòng trong để làm sâu, phòng ngoài gần quầy dễ phân tâm. Buổi tối có lớp học nên đông.",
+   "features": [
+    "ban_rong",
+    "coworking",
+    "dong",
+    "o_dien",
+    "vang"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJqwmhAwCrNTERu_gjRAx2FmU",
+   "name": "O2O Coffee",
+   "area": "Chùa Láng",
+   "address": "137 P. Chùa Láng",
+   "lat": 21.0234212,
+   "lng": 105.804256,
+   "rating": 4.1,
+   "reviews": 75,
+   "hours": "7:15–22:45",
+   "phone": "",
+   "work": 3,
+   "tags": [
+    "3 tầng",
+    "nhiều bàn cao để học",
+    "sofa",
+    "có khóa xe"
+   ],
+   "note": "Không gian rộng, nhiều bàn cho học và làm việc. Đồ uống bị chê, giá 40–50k.",
+   "features": [
+    "ban_rong",
+    "rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJfYjr6MmrNTER9T_KmmVRMHg",
+   "name": "Unde! Coffee",
+   "area": "Láng (Huỳnh Thúc Kháng)",
+   "address": "66 Huỳnh Thúc Kháng kéo dài, Láng",
+   "lat": 21.0230476,
+   "lng": 105.8037864,
+   "rating": 4.5,
+   "reviews": 141,
+   "hours": "8:00–23:00",
+   "phone": "0988 041 695",
+   "work": 3,
+   "tags": [
+    "tầng trên rộng",
+    "dãy ghế cửa sổ",
+    "yên tĩnh"
+   ],
+   "note": "Hợp làm việc ở tầng trên. Khách chủ yếu là sinh viên nên giờ cao điểm có thể ồn.",
+   "features": [
+    "rong",
+    "vang"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJ4WneXfSrNTERdp5W2izl8ls",
+   "name": "Rolling Beans Coffee",
+   "area": "Chùa Láng",
+   "address": "10 P. Chùa Láng",
+   "lat": 21.0231109,
+   "lng": 105.8082328,
+   "rating": 4.4,
+   "reviews": 180,
+   "hours": "7:00–23:00",
+   "phone": "0868 856 139",
+   "work": 3,
+   "tags": [
+    "rộng",
+    "thêm tầng",
+    "phòng ngoài cho người hút thuốc"
+   ],
+   "note": "Rộng rãi, giá hợp lý. Ít review nói cụ thể về làm việc, nên coi là lựa chọn dự phòng.",
+   "features": [
+    "rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJowYa97SvNTERBLs_nAW1AkA",
+   "name": "Aftertaste Coffee Lab",
+   "area": "Ecopark (Hưng Yên)",
+   "address": "168 Thảo Nguyên, KĐT Ecopark",
+   "lat": 20.9526249,
+   "lng": 105.9431534,
+   "rating": 4.7,
+   "reviews": 314,
+   "hours": "7:30–18:30 (T3 đến 16:00)",
+   "phone": "0944 240 687",
+   "work": 5,
+   "tags": [
+    "tầng 2 rộng yên tĩnh",
+    "wifi",
+    "hợp freelancer",
+    "khu hút thuốc riêng"
+   ],
+   "note": "Lựa chọn làm việc tốt nhất ở Ecopark. Cà phê bị chê nhạt. Thứ Ba đóng sớm.",
+   "features": [
+    "rong",
+    "vang",
+    "wifi"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJlRzFYQCvNTER9pnL6N1flXA",
+   "name": "Lake View Coffee",
+   "area": "Ecopark (Hưng Yên)",
+   "address": "KĐT Ecopark, cạnh hồ Thiên Nga",
+   "lat": 20.952588,
+   "lng": 105.9368927,
+   "rating": 4.4,
+   "reviews": 280,
+   "hours": "7:00–22:00",
+   "phone": "0971 151 287",
+   "work": 3,
+   "tags": [
+    "view hồ",
+    "hoàng hôn đẹp",
+    "rộng"
+   ],
+   "note": "Hợp nửa sau ngày sau khi Aftertaste đóng cửa. Cuối tuần đông, chọn bàn xa hồ nếu mở laptop.",
+   "features": [
+    "dong",
+    "rong",
+    "view_ho"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJJU7f0cmpNTERmhbIuiDp_5k",
+   "name": "Phiêng Lơi cafe",
+   "area": "Gia Lâm",
+   "address": "2 Ng. 27 P. Thuận An, Gia Lâm",
+   "lat": 21.0120054,
+   "lng": 105.9410873,
+   "rating": 4.8,
+   "reviews": 139,
+   "hours": "8:00–23:00",
+   "phone": "0856 868 968",
+   "work": 4,
+   "tags": [
+    "khu riêng cho học/làm việc",
+    "rộng thoáng",
+    "cạnh công viên Gia Lâm"
+   ],
+   "note": "Có khu riêng để học và làm việc tách khỏi khu trò chuyện. Gần hơn Ecopark.",
+   "features": [
+    "rong",
+    "coworking"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJP4yv2QepNTERRfYanCAUKvo",
+   "name": "Trần Cafe",
+   "area": "Gia Lâm",
+   "address": "47 Ng. 291 Ngô Xuân Quảng, Gia Lâm",
+   "lat": 21.0112851,
+   "lng": 105.9382077,
+   "rating": 4.1,
+   "reviews": 86,
+   "hours": "7:00–23:00",
+   "phone": "0976 684 404",
+   "work": 3,
+   "tags": [
+    "yên tĩnh",
+    "hợp thảo luận nhóm"
+   ],
+   "note": "Review nhắc yên tĩnh, hợp làm việc. Quán nhỏ, đồ uống đắt so với chất lượng.",
+   "features": [
+    "vang"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJg0bTmIsBNTERhl6EldVuOzY",
+   "name": "Gen.C Coffee Đông Anh",
+   "area": "Đông Anh",
+   "address": "4VP6+3V, Đông Anh",
+   "lat": 21.1351589,
+   "lng": 105.8621295,
+   "rating": 4.7,
+   "reviews": 38,
+   "hours": "6:30–22:30",
+   "phone": "0965 572 586",
+   "work": 4,
+   "tags": [
+    "ghế ngồi thoải mái",
+    "điều hòa",
+    "tầng trên",
+    "khu hút thuốc ngoài"
+   ],
+   "note": "Review nhắc ngồi lâu được, có điều hòa. Ít review (38) nên cần kiểm chứng.",
+   "features": [
+    "dieu_hoa",
+    "rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJgbj2FwABNTERmm4L0G-6M_I",
+   "name": "SUGITEA & Coffee Đông Anh",
+   "area": "Đông Anh",
+   "address": "Đ. Phúc Lộc, Đông Anh",
+   "lat": 21.136957,
+   "lng": 105.8479443,
+   "rating": 4.7,
+   "reviews": 50,
+   "hours": "6:00–22:00",
+   "phone": "0772 399 396",
+   "work": 4,
+   "tags": [
+    "tầng 2 rộng yên tĩnh",
+    "ghế cửa sổ",
+    "phòng riêng"
+   ],
+   "note": "Đầu giờ chiều vắng, yên. Có review phàn nàn bị nhắc tắt điều hòa sau 3 tiếng ngồi.",
+   "features": [
+    "rong",
+    "vang"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJd4esAQABNTERREHfl1LXbXM",
+   "name": "Ngõ Nhỏ Cafe",
+   "area": "Đông Anh (Phúc Thịnh)",
+   "address": "1 Khối 7B, Đông Anh",
+   "lat": 21.170214,
+   "lng": 105.8473607,
+   "rating": 5.0,
+   "reviews": 52,
+   "hours": "8:00–22:00",
+   "phone": "0349 030 511",
+   "work": 3,
+   "tags": [
+    "sân vườn",
+    "hồ cá",
+    "nhà cây",
+    "yên tĩnh"
+   ],
+   "note": "Đổi gió kiểu vườn xanh, rất yên. Thông tin về bàn và ổ điện còn thiếu.",
+   "features": [
+    "ngoai_troi",
+    "vang",
+    "view_ho"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJDWapJwADNTERBSKzBROJ4vo",
+   "name": "Léman Coffee",
+   "area": "Sóc Sơn (Đông Sơn)",
+   "address": "Đông Sơn, Nội Bài",
+   "lat": 21.259749,
+   "lng": 105.8144157,
+   "rating": 4.4,
+   "reviews": 120,
+   "hours": "7:30–23:00",
+   "phone": "0593 426 666",
+   "work": 4,
+   "tags": [
+    "rộng",
+    "yên tĩnh",
+    "ghế thoải mái",
+    "hồ cá"
+   ],
+   "note": "Review nhắc hợp học và làm việc. Gần hồ Đồng Quan.",
+   "features": [
+    "rong",
+    "vang",
+    "view_ho"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJmZ2KZAADNTERecP1MGtmM20",
+   "name": "Lake coffee Sóc Sơn",
+   "area": "Sóc Sơn (hồ Đồng Quan)",
+   "address": "Sau Trường ĐH Thủ Đô, Sóc Sơn",
+   "lat": 21.2522625,
+   "lng": 105.8269219,
+   "rating": 4.7,
+   "reviews": 57,
+   "hours": "Mở 24h",
+   "phone": "0987 383 383",
+   "work": 3,
+   "tags": [
+    "view hồ",
+    "rộng",
+    "mở 24h",
+    "giá rẻ"
+   ],
+   "note": "Quán mới. Có review phàn nàn không bật điều hòa và phục vụ chậm khi đông.",
+   "features": [
+    "dong",
+    "rong",
+    "view_ho"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJXwPlMgADNTERDnVR9BGhEwQ",
+   "name": "Mít Coffee Sóc Sơn",
+   "area": "Sóc Sơn (Dược Thượng)",
+   "address": "215 Đ. Đa Phúc, Sóc Sơn",
+   "lat": 21.254199,
+   "lng": 105.8384922,
+   "rating": 4.9,
+   "reviews": 55,
+   "hours": "7:00–23:00 (T7–CN 24h)",
+   "phone": "0977 483 974",
+   "work": 3,
+   "tags": [
+    "rộng",
+    "sạch",
+    "view đẹp"
+   ],
+   "note": "Quán mới, review khen không gian rộng và sạch. Chưa có review nói cụ thể về làm việc.",
+   "features": [
+    "rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJ-8SysvZZNDER2EhyAErbwKA",
+   "name": "Cafe Du Miên",
+   "area": "Thạch Thất (cầu Phú Thứ)",
+   "address": "Cầu Phú Thứ, Thạch Thất",
+   "lat": 21.0549602,
+   "lng": 105.5710174,
+   "rating": 4.7,
+   "reviews": 25,
+   "hours": "7:30–23:00",
+   "phone": "0962 399 689",
+   "work": 3,
+   "tags": [
+    "phòng điều hòa",
+    "rộng",
+    "view sông Tích",
+    "gửi xe rộng"
+   ],
+   "note": "Đổi gió phía tây. Có phòng điều hòa. Ít review (25).",
+   "features": [
+    "dieu_hoa",
+    "rong",
+    "view_ho"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJiTDv0slbNDERshz2T81XdFs",
+   "name": "Nhà Chung cafe",
+   "area": "Hạ Bằng (Thạch Thất)",
+   "address": "Ngã 4 Mục Uyên, Hạ Bằng",
+   "lat": 21.0191434,
+   "lng": 105.5524231,
+   "rating": 4.8,
+   "reviews": 89,
+   "hours": "8:00–2:30 sáng",
+   "phone": "0867 789 198",
+   "work": 3,
+   "tags": [
+    "rộng",
+    "nhiều sách",
+    "có mèo",
+    "mở khuya"
+   ],
+   "note": "Không gian rộng, nhiều sách. Có review góp ý đèn hơi tối khi đọc buổi tối.",
+   "features": [
+    "rong"
+   ],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJ9TsbIK5bNDER3O46ZCuzk_E",
+   "name": "Twitter Beans Coffee Hòa Lạc",
+   "area": "KCNC Hòa Lạc",
+   "address": "Khu CNC Hòa Lạc",
+   "lat": 21.0008577,
+   "lng": 105.5380037,
+   "rating": 4.2,
+   "reviews": 255,
+   "hours": "7:00–20:30",
+   "phone": "024 3205 6262",
+   "work": 3,
+   "tags": [
+    "view Hòa Lạc",
+    "hợp họp"
+   ],
+   "note": "Hợp họp và làm việc trong khu CNC. Đồ uống được đánh giá trung bình, giá hơi cao.",
+   "features": [],
+   "visited": false,
+   "myScore": null,
+   "myNote": "",
+   "source": "claude"
+  },
+  {
+   "id": "ChIJU1B0IQCrNTERvYw6WY8O2GI",
+   "name": "Pila Coffee by Dao House",
+   "area": "Giảng Võ (Ba Đình)",
+   "address": "16 P. Phạm Huy Thông",
+   "lat": 21.0284662,
+   "lng": 105.8105647,
+   "rating": 4.3,
+   "reviews": 62,
+   "hours": "8:00–22:00",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "view hồ"
+   ],
+   "note": "",
+   "features": [
+    "rong",
+    "view_ho"
+   ],
+   "visited": true,
+   "myScore": 8.5,
+   "myNote": "Giá 40–60k. 2 tầng, không quá rộng nhưng thoáng. View hồ Ngọc Khánh.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJNxg91AarNTER3VlyMy2LcxM",
+   "name": "Khâm Thiên Giám - Books & Coffee",
+   "area": "Đống Đa",
+   "address": "5 Ng. 18 Huỳnh Thúc Kháng",
+   "lat": 21.0212579,
+   "lng": 105.8058945,
+   "rating": 4.3,
+   "reviews": 258,
+   "hours": "Mở 24h",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "4 tầng"
+   ],
+   "note": "",
+   "features": [
+    "rong"
+   ],
+   "visited": true,
+   "myScore": 8.5,
+   "myNote": "Giá 35–70k. 4 tầng, rộng, ngồi được 24/7.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJpQUFqTCrNTERUljeYs33GGU",
+   "name": "Read Station Huỳnh Thúc Kháng",
+   "area": "Láng",
+   "address": "155 Huỳnh Thúc Kháng",
+   "lat": 21.0214382,
+   "lng": 105.8034636,
+   "rating": 4.2,
+   "reviews": 339,
+   "hours": "7:00–22:30",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "3 tầng"
+   ],
+   "note": "",
+   "features": [
+    "rong"
+   ],
+   "visited": true,
+   "myScore": 8.0,
+   "myNote": "Giá 40–65k. 3 tầng, rộng.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJI-11ewCrNTERGa5s2EWfRFo",
+   "name": "Maycember café",
+   "area": "Chùa Láng",
+   "address": "72 Ngh. 23 Ng. 82 Chùa Láng",
+   "lat": 21.024308,
+   "lng": 105.8057784,
+   "rating": 4.8,
+   "reviews": 261,
+   "hours": "8:00–23:00",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "bàn không rộng"
+   ],
+   "note": "",
+   "features": [
+    "ban_chat"
+   ],
+   "visited": true,
+   "myScore": 7.5,
+   "myNote": "Giá 35–60k. 2 tầng, không rộng, bàn không rộng.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJCWOLpw6rNTERHGzaKSYY90k",
+   "name": "Orifi Rooftop Space",
+   "area": "Chùa Láng",
+   "address": "12 Ng. 80 Chùa Láng",
+   "lat": 21.0253245,
+   "lng": 105.8070178,
+   "rating": 4.5,
+   "reviews": 123,
+   "hours": "8:00–23:00",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "vắng",
+    "view hồ",
+    "coworking"
+   ],
+   "note": "",
+   "features": [
+    "coworking",
+    "rong",
+    "vang",
+    "view_ho"
+   ],
+   "visited": true,
+   "myScore": 9.0,
+   "myNote": "Giá 35–50k. Sân thượng rộng rãi, vắng người. View hồ đẹp.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJhYhsCCCrNTER3TyMSgX9L3k",
+   "name": "LAIKA CAFE - 82 Chùa Láng",
+   "area": "Chùa Láng",
+   "address": "Langs Village, Ng. 82 Chùa Láng",
+   "lat": 21.0235808,
+   "lng": 105.8060443,
+   "rating": 4.9,
+   "reviews": 240,
+   "hours": "7:00–22:30",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "3 tầng",
+    "đông"
+   ],
+   "note": "",
+   "features": [
+    "dong",
+    "rong"
+   ],
+   "visited": true,
+   "myScore": 7.5,
+   "myNote": "Giá 50–70k. 3 tầng, rộng, hơi đông người tùy lúc.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJtwumbWyrNTERl3GjSFSCBO8",
+   "name": "Puritea Workspace",
+   "area": "Chùa Láng",
+   "address": "46 Ng. 59 Chùa Láng (sân KTX)",
+   "lat": 21.0225322,
+   "lng": 105.8073625,
+   "rating": 4.8,
+   "reviews": 51,
+   "hours": "9:00–22:00",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "1 tầng",
+    "hẹp",
+    "workspace"
+   ],
+   "note": "",
+   "features": [
+    "ban_chat",
+    "coworking"
+   ],
+   "visited": true,
+   "myScore": 7.0,
+   "myNote": "Giá 35–50k. Chỉ 1 tầng, không gian hẹp.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJoxwNcJKrNTERsiKT1dDbWDA",
+   "name": "Blank Space - Workspace & Coffee",
+   "area": "Ngọc Hà",
+   "address": "22 Linh Lang",
+   "lat": 21.0365571,
+   "lng": 105.8104547,
+   "rating": 4.6,
+   "reviews": 335,
+   "hours": "7:00–3:00 sáng",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "yên tĩnh",
+    "vắng",
+    "workspace"
+   ],
+   "note": "",
+   "features": [
+    "coworking",
+    "rong",
+    "vang"
+   ],
+   "visited": true,
+   "myScore": 7.5,
+   "myNote": "Giá 50–80k. Rộng, 2 tầng, yên tĩnh, vắng. Hai bạn ghi là xa.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJy-rCYjyrNTERM9rVJp1tmOc",
+   "name": "The Orange Project",
+   "area": "Cầu Giấy",
+   "address": "71 Trần Quốc Vượng",
+   "lat": 21.0348526,
+   "lng": 105.7849941,
+   "rating": 5.0,
+   "reviews": 1349,
+   "hours": "7:30–23:00",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "3 tầng"
+   ],
+   "note": "",
+   "features": [
+    "rong"
+   ],
+   "visited": true,
+   "myScore": 8.0,
+   "myNote": "Giá 35–60k. 3 tầng, rộng, có đồ ăn, thoáng.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJkbQ3EQCrNTERL4uomHTdBhU",
+   "name": "Bold brew - 42 Trần Phú",
+   "area": "Ba Đình",
+   "address": "42 Trần Phú",
+   "lat": 21.0314358,
+   "lng": 105.8380165,
+   "rating": 4.9,
+   "reviews": 648,
+   "hours": "7:30–22:00",
+   "phone": "",
+   "work": null,
+   "tags": [],
+   "note": "",
+   "features": [],
+   "visited": true,
+   "myScore": 8.0,
+   "myNote": "Giá 50–80k. 1 tầng, vừa đủ, thoáng. Hai bạn ghi là xa.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJ89S9nrWrNTERWvVjZSQbCTY",
+   "name": "Timeless Cafe",
+   "area": "Tây Hồ",
+   "address": "198 Yên Phụ",
+   "lat": 21.0565317,
+   "lng": 105.8350587,
+   "rating": 4.7,
+   "reviews": 231,
+   "hours": "8:00–23:00",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "view hồ",
+    "wifi"
+   ],
+   "note": "",
+   "features": [
+    "rong",
+    "view_ho",
+    "wifi"
+   ],
+   "visited": true,
+   "myScore": 8.0,
+   "myNote": "Giá 50–80k. 2 tầng, rộng, thoáng. View hồ rất đẹp.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJYYIzpdyrNTERs7ZW8A1c6Bw",
+   "name": "Bonjour Cafe",
+   "area": "Tây Hồ",
+   "address": "129 Thụy Khuê / Nguyễn Đình Thi",
+   "lat": 21.044107,
+   "lng": 105.8207101,
+   "rating": 4.5,
+   "reviews": 945,
+   "hours": "8:00–23:00",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "3 tầng",
+    "view hồ"
+   ],
+   "note": "",
+   "features": [
+    "rong",
+    "view_ho"
+   ],
+   "visited": true,
+   "myScore": 8.0,
+   "myNote": "Giá 50–80k. 3 tầng, rộng, thoáng. View hồ Tây rất đẹp.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJtz03JXCrNTERHLi0nt5dqd0",
+   "name": "Indoor Coffee - Relax & Working space",
+   "area": "Láng",
+   "address": "55 Ng. 25 Vũ Ngọc Phan",
+   "lat": 21.0146546,
+   "lng": 105.8091873,
+   "rating": 4.3,
+   "reviews": 418,
+   "hours": "7:00–23:00",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "bàn rộng",
+    "workspace",
+    "yên tĩnh"
+   ],
+   "note": "",
+   "features": [
+    "ban_rong",
+    "coworking",
+    "rong",
+    "vang"
+   ],
+   "visited": true,
+   "myScore": 9.0,
+   "myNote": "Giá 50–80k. 2 tầng, rộng, bàn rất rộng.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJS6iOawCrNTERFDlARv0-0Sg",
+   "name": "Tiny Cafe | Sky Garden",
+   "area": "Yên Hòa",
+   "address": "169 Trung Hòa / Nguyễn Ngọc Vũ",
+   "lat": 21.0122012,
+   "lng": 105.8073463,
+   "rating": 3.9,
+   "reviews": 415,
+   "hours": "7:30–2:30 sáng",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "view"
+   ],
+   "note": "",
+   "features": [
+    "rong"
+   ],
+   "visited": true,
+   "myScore": 8.0,
+   "myNote": "Giá 50–70k. Sân thượng rộng, gửi xe hơi bất tiện.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJQZa_BgCrNTERIKZqQhSfxgA",
+   "name": "1000M",
+   "area": "Cầu Giấy",
+   "address": "73 Khúc Thừa Dụ",
+   "lat": 21.0329522,
+   "lng": 105.7920987,
+   "rating": 4.4,
+   "reviews": 113,
+   "hours": "",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "mặt đường"
+   ],
+   "note": "",
+   "features": [
+    "mat_duong"
+   ],
+   "visited": true,
+   "myScore": 7.5,
+   "myNote": "Giá 39–69k. 2 tầng, ngay mặt đường, ấm cúng.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJj5EbHOirNTEREOb0w_cktN0",
+   "name": "Miên Coffee & Space",
+   "area": "Cầu Giấy",
+   "address": "C5 ngách 19 Ng. 10 Nguyễn Văn Huyên",
+   "lat": 21.0371766,
+   "lng": 105.7965898,
+   "rating": 5.0,
+   "reviews": 224,
+   "hours": "8:00–23:00",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "rộng",
+    "4 tầng",
+    "bàn rộng",
+    "yên tĩnh"
+   ],
+   "note": "",
+   "features": [
+    "ban_rong",
+    "rong",
+    "vang"
+   ],
+   "visited": true,
+   "myScore": 8.5,
+   "myNote": "Giá 40–60k. 4 tầng, trong ngõ, khá chill, bàn ghế rộng.",
+   "source": "sheet"
+  },
+  {
+   "id": "ChIJtas-NgCpNTERdoO7KXRrP-I",
+   "name": "Les Fams Coffee & Tea",
+   "area": "Long Biên (Phúc Lợi)",
+   "address": "KĐT The Diamond Point, 39 Nguyễn Minh Châu",
+   "lat": 21.0458515,
+   "lng": 105.9016042,
+   "rating": 4.8,
+   "reviews": 21,
+   "hours": "6:30–22:00",
+   "phone": "",
+   "work": null,
+   "tags": [
+    "vắng",
+    "thoáng"
+   ],
+   "note": "",
+   "features": [
+    "vang"
+   ],
+   "visited": true,
+   "myScore": 7.5,
+   "myNote": "Giá 40–60k. 2 tầng, khu đô thị vắng, hợp đi cuối tuần để làm việc.",
+   "source": "sheet"
+  }
+ ]
+}

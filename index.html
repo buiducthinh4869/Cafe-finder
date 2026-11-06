@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hôm nay ngồi đâu?</title>
+  <meta name="description" content="Gợi ý quán cafe để làm việc quanh Hồ Tây, Chùa Láng và ngoại thành Hà Nội.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1>Hôm nay ngồi đâu?</h1>
+      <p class="sub">Quán để làm việc: rộng, vắng, bàn to.</p>
+      <div class="who" role="group" aria-label="Ai đang dùng">
+        <span class="who-label">Đang dùng:</span>
+        <div class="seg" id="whoSeg"></div>
+        <button class="link" id="renameBtn" type="button">Đổi tên</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="controls" aria-label="Chọn bối cảnh">
+      <div class="modes" id="modes" role="tablist">
+        <button class="mode" data-mode="hotay" role="tab">
+          <span class="mode-title">Gần Hồ Tây</span>
+          <span class="mode-sub">quanh nhà</span>
+        </button>
+        <button class="mode" data-mode="chualang" role="tab">
+          <span class="mode-title">Gần Chùa Láng</span>
+          <span class="mode-sub">gần bạn ấy</span>
+        </button>
+        <button class="mode" data-mode="xa" role="tab">
+          <span class="mode-title">Xa hẳn</span>
+          <span class="mode-sub">đổi gió 10–40 km</span>
+        </button>
+      </div>
+
+      <div class="range-row" id="rangeRow">
+        <label for="range" id="rangeLabel">Bán kính</label>
+        <input type="range" id="range" min="1" max="10" step="0.5">
+        <output id="rangeOut"></output>
+      </div>
+      <div class="range-row" id="originRow" hidden>
+        <span class="lbl">Xuất phát từ</span>
+        <div class="seg small" id="originSeg">
+          <button data-origin="hotay" type="button">Hồ Tây</button>
+          <button data-origin="chualang" type="button">Chùa Láng</button>
+        </div>
+      </div>
+      <div class="filters">
+        <label class="chk"><input type="checkbox" id="openNow"> Đang mở cửa</label>
+        <label class="chk"><input type="checkbox" id="onlyNew"> Chỉ quán chưa đi</label>
+        <label class="chk"><input type="checkbox" id="showHidden"> Hiện quán đã ẩn</label>
+      </div>
+    </section>
+
+    <div class="sync" id="syncBar"></div>
+
+    <section id="list" class="list" aria-live="polite"></section>
+
+    <section class="panel" id="suggestPanel">
+      <h2>Biết quán hay chưa có trong danh sách?</h2>
+      <form id="suggestForm" class="suggest">
+        <input id="sgName" placeholder="Tên quán, địa chỉ hoặc link Google Maps" required>
+        <input id="sgNote" placeholder="Vì sao hợp làm việc? (không bắt buộc)">
+        <button class="btn primary" type="submit">Gửi gợi ý</button>
+      </form>
+    </section>
+
+    <details class="panel" id="modelPanel">
+      <summary>Web đang ưu tiên những gì</summary>
+      <div id="modelBody"></div>
+    </details>
+
+    <footer class="foot">
+      Dữ liệu quán lấy từ Google Maps và danh sách hai bạn từng đi, cập nhật <span id="updated"></span>.
+      Khoảng cách là ước tính đường đi, bằng 1,3 lần đường chim bay.
+    </footer>
+  </main>
+
+  <dialog id="fbDialog">
+    <form method="dialog" id="fbForm">
+      <h3 id="fbTitle">Feedback</h3>
+      <p class="muted" id="fbWho"></p>
+      <div class="stars" id="stars" role="radiogroup" aria-label="Chấm điểm"></div>
+      <p class="lbl">Điểm cộng</p>
+      <div class="chips" id="chipsPos"></div>
+      <p class="lbl">Điểm trừ</p>
+      <div class="chips" id="chipsNeg"></div>
+      <label class="lbl" for="fbNote">Ghi chú</label>
+      <textarea id="fbNote" rows="2" placeholder="Ví dụ: tầng 3 vắng, ổ điện ở dãy cửa sổ"></textarea>
+      <label class="chk"><input type="checkbox" id="fbHide"> Đừng gợi ý quán này nữa</label>
+      <div class="dlg-actions">
+        <button class="btn" value="cancel" type="submit">Hủy</button>
+        <button class="btn primary" id="fbSave" value="save" type="submit">Lưu</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
