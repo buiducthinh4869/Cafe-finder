@@ -21,11 +21,6 @@
         </div>
         <img class="hero-cat" src="cat.svg" alt="Chú mèo mặc vest cầm ly cà phê sữa đá, hỏi: Cà phê?" width="132" height="138">
       </div>
-      <div class="who" role="group" aria-label="Ai đang dùng">
-        <span class="who-label">Đang dùng:</span>
-        <div class="seg" id="whoSeg"></div>
-        <button class="link" id="renameBtn" type="button">Đổi tên</button>
-      </div>
     </div>
   </header>
 
@@ -44,8 +39,8 @@
         </button>
         <button class="mode" data-mode="khac" role="tab">
           <span class="mode-ico" aria-hidden="true">📍</span>
-          <span class="mode-title">Khu khác</span>
-          <span class="mode-sub" id="khacSub">gõ tên khu vực</span>
+          <span class="mode-title">Quanh đây</span>
+          <span class="mode-sub" id="khacSub">vị trí bất kỳ</span>
         </button>
         <button class="mode" data-mode="xa" role="tab">
           <span class="mode-ico" aria-hidden="true">🌿</span>
@@ -55,12 +50,12 @@
       </div>
 
       <div class="area" id="areaRow" hidden>
-        <form id="areaForm" class="area-form">
-          <input id="areaInput" placeholder="Ví dụ: Cầu Giấy, Times City, 22 Láng Hạ" autocomplete="off">
-          <button class="btn primary" type="submit">Tìm</button>
+        <button class="btn primary geo" id="geoBtn" type="button">📍 Tìm quanh vị trí của tôi</button>
+        <div class="or"><span>hoặc gõ địa điểm</span></div>
+        <form id="areaForm" class="area-form" autocomplete="off">
+          <input id="areaInput" type="search" enterkeyhint="search" placeholder="Tên đường, tòa nhà, trường, quán… hoặc dán link Google Maps" aria-label="Tìm địa điểm" aria-autocomplete="list" aria-controls="areaResults">
         </form>
-        <button class="link" id="geoBtn" type="button">Dùng vị trí hiện tại của tôi</button>
-        <div class="area-results" id="areaResults"></div>
+        <div class="area-results" id="areaResults" role="listbox"></div>
       </div>
 
       <div class="range-row" id="rangeRow">
@@ -109,7 +104,6 @@
   <dialog id="fbDialog">
     <form method="dialog" id="fbForm">
       <h3 id="fbTitle">Feedback</h3>
-      <p class="muted" id="fbWho"></p>
       <div class="stars" id="stars" role="radiogroup" aria-label="Chấm điểm"></div>
       <p class="lbl">Điểm cộng</p>
       <div class="chips" id="chipsPos"></div>

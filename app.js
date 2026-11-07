@@ -62,6 +62,7 @@
     ["Ecopark", 20.9530, 105.9400], ["Đông Anh", 21.1360, 105.8480], ["Sóc Sơn", 21.2550, 105.8300],
     ["Hòa Lạc", 21.0100, 105.5300], ["Thạch Thất", 21.0500, 105.5700]
   ];
+  const MIN_RESULTS = 5;
   const fold = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").trim();
 
   // Icon nét mảnh cho đặc điểm quán.
@@ -96,8 +97,6 @@
   const state = {
     cafes: [],
     feedback: [],              // tất cả feedback: từ sheet + bản lưu máy
-    users: LS.get("cf_users", ["Thịnh", "Bạn gái"]),
-    who: LS.get("cf_who", 0),
     mode: LS.get("cf_mode", "hotay"),
     origin: LS.get("cf_origin", "hotay"),
     ranges: LS.get("cf_ranges", {}),
@@ -245,23 +244,24 @@
     const ctx = { signals, weights, near: m.near };
     const visitedByFb = new Set(state.feedback.filter(f => f.type === "feedback" && f.stars).map(f => f.place_id));
 
-    let rows = state.cafes.map(c => Object.assign({}, c, { km: roadKm(origin, c) }));
-    rows = rows.filter(c => m.near ? c.km <= range : (c.km >= m.floor && c.km <= range));
-    rows = rows.map(c => Object.assign(c, scoreCafe(c, ctx), { beenThere: c.visited || visitedByFb.has(c.id) }));
-    if (!state.showHidden) rows = rows.filter(c => !(c.sig && c.sig.hide));
-    if (state.onlyNew) rows = rows.filter(c => !c.beenThere);
-    if (state.openNow) rows = rows.filter(c => openStatus(c.hours) !== false);
+    let all = state.cafes.map(c => Object.assign({}, c, { km: roadKm(origin, c) }));
+    all = all.map(c => Object.assign(c, scoreCafe(c, ctx), { beenThere: c.visited || visitedByFb.has(c.id) }));
+    if (!state.showHidden) all = all.filter(c => !(c.sig && c.sig.hide));
+    if (state.onlyNew) all = all.filter(c => !c.beenThere);
+    if (state.openNow) all = all.filter(c => openStatus(c.hours) !== false);
+    let rows = all.filter(c => m.near ? c.km <= range : (c.km >= m.floor && c.km <= range));
     rows.sort((a, b) => b.score - a.score);
-    return { rows, origin, range, weights };
+    const inRange = rows.length;
+    // Gần đây có ít quán: bổ sung các quán gần nhất ngoài bán kính để luôn có lựa chọn.
+    if (m.near && inRange < MIN_RESULTS) {
+      const extra = all.filter(c => c.km > range).sort((a, b) => a.km - b.km).slice(0, MIN_RESULTS - inRange);
+      extra.forEach(c => { c.beyond = true; });
+      rows = rows.concat(extra);
+    }
+    return { rows, origin, range, weights, inRange };
   }
 
   // ---------- giao diện ----------
-  function renderWho() {
-    const seg = $("#whoSeg");
-    seg.replaceChildren(...state.users.map((u, i) =>
-      el("button", { type: "button", "aria-pressed": String(i === state.who), onclick: () => { state.who = i; LS.set("cf_who", i); renderWho(); } }, u)));
-  }
-
   function renderControls() {
     document.querySelectorAll(".mode").forEach(b => b.setAttribute("aria-selected", String(b.dataset.mode === state.mode)));
     const m = MODES[state.mode];
@@ -272,7 +272,7 @@
     $("#rangeOut").textContent = fmtKm(+r.value);
     $("#originRow").hidden = m.near;
     $("#areaRow").hidden = state.mode !== "khac";
-    $("#khacSub").textContent = state.custom ? state.custom.name : "gõ tên khu vực";
+    $("#khacSub").textContent = state.custom ? state.custom.name : "vị trí bất kỳ";
     document.querySelectorAll("#originSeg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.origin === state.origin)));
   }
 
@@ -288,18 +288,27 @@
   }
 
   function renderList() {
-    const { rows, origin, range, weights, needArea } = rank();
+    const { rows, origin, range, weights, needArea, inRange } = rank();
     const list = $("#list");
+    const m = MODES[state.mode];
     if (needArea) {
-      list.replaceChildren(el("p", { class: "empty" }, el("img", { src: "cat.svg", alt: "" }), "Gõ tên khu vực ở trên, ví dụ Cầu Giấy hoặc Times City, hoặc dùng vị trí hiện tại."));
+      list.replaceChildren(el("p", { class: "empty" }, el("img", { src: "cat.svg", alt: "" }), "Bấm Tìm quanh vị trí của tôi, hoặc gõ một địa điểm bất kỳ ở Hà Nội."));
     } else if (!rows.length) {
-      list.replaceChildren(el("p", { class: "empty" }, el("img", { src: "cat.svg", alt: "" }), "Không có quán nào trong phạm vi này. Thử kéo bán kính rộng hơn."));
+      list.replaceChildren(el("p", { class: "empty" }, el("img", { src: "cat.svg", alt: "" }), "Không có quán nào khớp bộ lọc. Thử bỏ bớt bộ lọc hoặc kéo bán kính rộng hơn."), mapsMore(origin));
     } else {
-      const cards = rows.map((c, i) => card(c, i, origin));
-      const m = MODES[state.mode];
-      if (m.near && rows.length < 4 && range < m.max) cards.unshift(el("p", { class: "hint" }, `Chỉ có ${rows.length} quán trong ${fmtKm(range)}. Kéo bán kính rộng hơn để xem thêm.`));
+      const cards = [];
+      rows.forEach((c, i) => {
+        if (c.beyond && (i === 0 || !rows[i - 1].beyond)) {
+          cards.push(el("p", { class: "hint" }, inRange
+            ? `Chỉ có ${inRange} quán trong ${fmtKm(range)}. Dưới đây là các quán gần nhất ngoài bán kính.`
+            : `Chưa có quán nào trong ${fmtKm(range)}. Dưới đây là các quán gần nhất.`));
+        }
+        cards.push(card(c, i, origin));
+      });
+      if (m.near) cards.push(mapsMore(origin));
       list.replaceChildren(...cards);
     }
+    if (state.mode === "khac" && origin && inRange < 3) logGap(origin, inRange);
     renderModel(weights);
   }
 
@@ -328,7 +337,7 @@
     strip.querySelector("i").textContent = c.hours || "chưa rõ giờ";
     strip.querySelector("em").textContent = String(c.rating).replace(".", ",") + " · " + c.reviews;
     strip.querySelectorAll("b,i,em").forEach(n => { n.style.fontStyle = "normal"; n.style.fontWeight = "500"; });
-    return el("article", { class: "card" + (c.sig && c.sig.hide ? " hidden-cafe" : ""), id: "c-" + c.id },
+    return el("article", { class: "card" + (c.sig && c.sig.hide ? " hidden-cafe" : "") + (c.beyond ? " beyond" : ""), id: "c-" + c.id },
       el("div", { class: "card-head" },
         el("div", { class: "rank" }, String(i + 1)),
         el("div", { class: "card-title" },
@@ -343,7 +352,7 @@
       c.note ? el("p", { class: "note" }, c.note) : null,
       c.myNote ? el("p", { class: "note" }, "Ghi chú của hai bạn: " + c.myNote) : null,
       fbs.length ? el("div", { class: "fb-list" }, fbs.map(f =>
-        el("p", {}, `${f.who}: ${f.stars ? "★".repeat(+f.stars) : ""} ${(f.chips || []).map(chipLabel).join(", ")}${f.note ? " · " + f.note : ""}`))) : null,
+        el("p", {}, `${f.who ? f.who + ": " : ""}${f.stars ? "★".repeat(+f.stars) : ""} ${(f.chips || []).map(chipLabel).join(", ")}${f.note ? " · " + f.note : ""}`))) : null,
       el("div", { class: "actions" },
         el("a", { class: "btn", href: dir, target: "_blank", rel: "noopener" }, "Chỉ đường"),
         el("a", { class: "btn", href: maps, target: "_blank", rel: "noopener" }, "Xem trên Maps"),
@@ -376,6 +385,25 @@
   }
 
   // ---------- chọn khu vực ----------
+  function mapsMore(origin) {
+    const a = el("a", { class: "more-link", target: "_blank", rel: "noopener",
+      href: `https://www.google.com/maps/search/${encodeURIComponent("cafe làm việc")}/@${origin.lat},${origin.lng},15z` },
+      `Xem thêm quán cafe làm việc quanh ${origin.name} trên Google Maps ↗`);
+    return a;
+  }
+
+  // Ghi lại nơi còn ít quán để Claude bổ sung trong lần cập nhật hàng tuần.
+  function logGap(origin, n) {
+    const key = origin.lat.toFixed(3) + "," + origin.lng.toFixed(3);
+    const seen = LS.get("cf_gaps", []);
+    if (seen.includes(key)) return;
+    seen.push(key); LS.set("cf_gaps", seen.slice(-200));
+    const row = { type: "gap", place_id: "", name: origin.name, stars: "", chips: [], note: `${origin.lat.toFixed(5)},${origin.lng.toFixed(5)} · ${n} quán trong bán kính`, hide: false, who: "" };
+    row.time = new Date().toISOString(); row.id = row.time + "-" + Math.random().toString(36).slice(2, 7);
+    const pending = LS.get("cf_pending", []); pending.push(row); LS.set("cf_pending", pending);
+    flush();
+  }
+
   function setCustom(name, lat, lng) {
     state.custom = { name, lat: +lat, lng: +lng };
     LS.set("cf_custom", state.custom);
@@ -383,27 +411,83 @@
     $("#areaInput").value = "";
     renderControls(); renderList();
   }
-  function areaChoices(items) {
-    const box = $("#areaResults");
-    if (!items.length) { box.replaceChildren(el("p", { class: "muted" }, "Không tìm thấy địa điểm này ở Hà Nội. Thử gõ cụ thể hơn.")); return; }
-    box.replaceChildren(...items.slice(0, 5).map(it => el("button", { type: "button", onclick: () => setCustom(it.name, it.lat, it.lng) }, it.label || it.name)));
+  // ---------- tìm địa điểm ----------
+  const HN = { minLat: 20.55, maxLat: 21.42, minLng: 105.28, maxLng: 106.0 };
+  const inHN = (lat, lng) => lat > HN.minLat && lat < HN.maxLat && lng > HN.minLng && lng < HN.maxLng;
+  let areaItems = [], areaActive = -1, areaSeq = 0, areaTimer = null;
+
+  function parseCoords(q) {
+    const pats = [/@(-?\d+\.\d+),\s*(-?\d+\.\d+)/, /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/, /[?&](?:q|query|ll|center|destination)=(-?\d+\.\d+)(?:,|%2C)\s*(-?\d+\.\d+)/i, /^\s*(-?\d{1,2}\.\d+)\s*[, ]\s*(-?\d{2,3}\.\d+)\s*$/];
+    for (const p of pats) { const m = q.match(p); if (m) return { lat: +m[1], lng: +m[2] }; }
+    return null;
   }
-  async function searchArea(q) {
+
+  function renderAreaItems(items, msg) {
+    areaItems = items; areaActive = items.length ? 0 : -1;
+    const box = $("#areaResults");
+    if (!items.length) { box.replaceChildren(msg ? el("p", { class: "muted" }, msg) : ""); return; }
+    box.replaceChildren(...items.map((it, i) => el("button", {
+      type: "button", role: "option", class: i === 0 ? "active" : "",
+      onclick: () => setCustom(it.name, it.lat, it.lng)
+    }, el("span", {}, it.name), it.sub ? el("small", {}, it.sub) : null)));
+  }
+
+  function localMatches(q) {
     const f = fold(q);
-    const local = AREAS.filter(a => fold(a[0]).includes(f) || f.includes(fold(a[0])));
-    if (local.length === 1 && fold(local[0][0]) === f) { setCustom(local[0][0], local[0][1], local[0][2]); return; }
-    const items = local.map(a => ({ name: a[0], lat: a[1], lng: a[2], label: a[0] }));
-    $("#areaResults").replaceChildren(el("p", { class: "muted" }, "Đang tìm…"));
-    try {
-      const url = "https://nominatim.openstreetmap.org/search?format=json&limit=5&countrycodes=vn&bounded=1&viewbox=105.3,21.45,106.1,20.75&accept-language=vi&q=" + encodeURIComponent(q + ", Hà Nội");
-      const res = await fetch(url);
-      const data = await res.json();
-      for (const d of data) {
-        const label = d.display_name.split(",").slice(0, 3).join(",");
-        items.push({ name: d.display_name.split(",")[0], lat: d.lat, lng: d.lon, label });
-      }
-    } catch (e) { /* dùng danh sách có sẵn */ }
-    areaChoices(items);
+    if (f.length < 2) return [];
+    const areas = AREAS.filter(a => fold(a[0]).includes(f)).slice(0, 3)
+      .map(a => ({ name: a[0], sub: "Khu vực", lat: a[1], lng: a[2] }));
+    const cafes = state.cafes.filter(c => fold(c.name).includes(f)).slice(0, 3)
+      .map(c => ({ name: c.name, sub: "Quán trong danh sách · " + c.area, lat: c.lat, lng: c.lng }));
+    return areas.concat(cafes);
+  }
+
+  async function photon(q) {
+    const url = "https://photon.komoot.io/api/?limit=8&lat=21.03&lon=105.83&bbox=" +
+      [HN.minLng, HN.minLat, HN.maxLng, HN.maxLat].join(",") + "&q=" + encodeURIComponent(q);
+    const res = await fetch(url);
+    const data = await res.json();
+    const seen = new Set();
+    return (data.features || []).map(ft => {
+      const p = ft.properties || {}, [lng, lat] = ft.geometry.coordinates;
+      const name = p.name || [p.housenumber, p.street].filter(Boolean).join(" ") || p.district || p.city;
+      const sub = [p.name && p.street ? [p.housenumber, p.street].filter(Boolean).join(" ") : "", p.locality || p.district, p.city || p.county]
+        .filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).join(", ");
+      return { name, sub, lat, lng };
+    }).filter(it => it.name && inHN(it.lat, it.lng)).filter(it => {
+      const k = fold(it.name + it.sub); if (seen.has(k)) return false; seen.add(k); return true;
+    });
+  }
+
+  async function nominatim(q) {
+    const url = "https://nominatim.openstreetmap.org/search?format=json&limit=5&countrycodes=vn&bounded=1&viewbox=105.28,21.42,106.0,20.55&accept-language=vi&q=" + encodeURIComponent(q);
+    const res = await fetch(url);
+    const data = await res.json();
+    return data.map(d => {
+      const parts = d.display_name.split(",").map(s => s.trim());
+      return { name: parts[0], sub: parts.slice(1, 3).join(", "), lat: +d.lat, lng: +d.lon };
+    });
+  }
+
+  async function searchArea(q, final) {
+    const seq = ++areaSeq;
+    const c = parseCoords(q);
+    if (c) {
+      if (!inHN(c.lat, c.lng)) { renderAreaItems([], "Địa điểm trong link nằm ngoài Hà Nội."); return; }
+      setCustom("Địa điểm từ link", c.lat, c.lng); return;
+    }
+    if (/maps\.app\.goo\.gl|goo\.gl\/maps/i.test(q)) {
+      renderAreaItems([], "Link rút gọn chưa đọc được. Mở link trên Google Maps, rồi copy link đầy đủ trên thanh địa chỉ."); return;
+    }
+    const local = localMatches(q);
+    if (q.trim().length < 3) { renderAreaItems(local); return; }
+    renderAreaItems(local, "Đang tìm…");
+    let remote = [];
+    try { remote = await photon(q); } catch (e) { /* thử nguồn khác */ }
+    if (!remote.length && final) { try { remote = await nominatim(q); } catch (e) { /* bỏ qua */ } }
+    if (seq !== areaSeq) return;
+    const items = local.concat(remote).slice(0, 8);
+    renderAreaItems(items, "Không tìm thấy địa điểm này ở Hà Nội. Thử thêm tên phường hoặc quận.");
   }
 
   function renderSync() {
@@ -419,7 +503,6 @@
   function openFeedback(c) {
     fbCafe = c; fbStars = 0;
     $("#fbTitle").textContent = c.name;
-    $("#fbWho").textContent = "Người chấm: " + state.users[state.who];
     $("#fbNote").value = "";
     $("#fbHide").checked = false;
     const stars = $("#stars");
@@ -455,7 +538,7 @@
 
   function submit(row) {
     row.time = new Date().toISOString();
-    row.who = state.users[state.who];
+    row.who = row.who || "";
     row.id = row.time + "-" + Math.random().toString(36).slice(2, 7);
     state.feedback.push(row);
     const local = LS.get("cf_feedback", []); local.push(row); LS.set("cf_feedback", local);
@@ -514,16 +597,38 @@
     document.querySelectorAll("#originSeg button").forEach(b => b.addEventListener("click", () => {
       state.origin = b.dataset.origin; LS.set("cf_origin", state.origin); renderControls(); renderList();
     }));
-    $("#areaForm").addEventListener("submit", e => {
+    const ai = $("#areaInput");
+    ai.addEventListener("input", () => {
+      clearTimeout(areaTimer);
+      const q = ai.value.trim();
+      if (!q) { renderAreaItems([]); return; }
+      areaTimer = setTimeout(() => searchArea(q, false), 280);
+    });
+    ai.addEventListener("keydown", e => {
+      if (!areaItems.length) return;
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        areaActive = (areaActive + (e.key === "ArrowDown" ? 1 : -1) + areaItems.length) % areaItems.length;
+        [...$("#areaResults").children].forEach((b, i) => b.classList.toggle("active", i === areaActive));
+      }
+    });
+    $("#areaForm").addEventListener("submit", async e => {
       e.preventDefault();
-      const q = $("#areaInput").value.trim();
-      if (q) searchArea(q);
+      const q = ai.value.trim();
+      if (!q) return;
+      if (areaItems.length && areaActive >= 0) { const it = areaItems[areaActive]; setCustom(it.name, it.lat, it.lng); return; }
+      clearTimeout(areaTimer);
+      await searchArea(q, true);
+      if (areaItems.length === 1) setCustom(areaItems[0].name, areaItems[0].lat, areaItems[0].lng);
     });
     $("#geoBtn").addEventListener("click", () => {
       if (!navigator.geolocation) { toast("Trình duyệt không hỗ trợ định vị."); return; }
       toast("Đang lấy vị trí…");
       navigator.geolocation.getCurrentPosition(
-        p => setCustom("Vị trí của bạn", p.coords.latitude, p.coords.longitude),
+        p => {
+          if (!inHN(p.coords.latitude, p.coords.longitude)) { toast("Vị trí hiện tại nằm ngoài Hà Nội."); return; }
+          setCustom("Vị trí của bạn", p.coords.latitude, p.coords.longitude);
+        },
         () => toast("Không lấy được vị trí. Hãy cho phép truy cập vị trí hoặc gõ tên khu vực."),
         { enableHighAccuracy: true, timeout: 10000 }
       );
@@ -531,11 +636,6 @@
     $("#openNow").addEventListener("change", e => { state.openNow = e.target.checked; renderList(); });
     $("#onlyNew").addEventListener("change", e => { state.onlyNew = e.target.checked; renderList(); });
     $("#showHidden").addEventListener("change", e => { state.showHidden = e.target.checked; renderList(); });
-    $("#renameBtn").addEventListener("click", () => {
-      const cur = state.users[state.who];
-      const v = prompt("Tên hiển thị cho người này:", cur);
-      if (v && v.trim()) { state.users[state.who] = v.trim(); LS.set("cf_users", state.users); renderWho(); }
-    });
     $("#fbForm").addEventListener("submit", e => {
       if (e.submitter && e.submitter.value === "save") saveFeedback();
     });
@@ -551,7 +651,6 @@
 
   async function init() {
     bind();
-    renderWho();
     renderControls();
     try {
       const res = await fetch("data/cafes.json", { cache: "no-store" });

@@ -112,7 +112,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .panel h2 { font-size: 17px; margin-bottom: 10px; }
 .panel summary { cursor: pointer; font-weight: 600; }
 .suggest { display: flex; flex-direction: column; gap: 8px; }
-input:not([type]), textarea { width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+input:not([type]), input[type=search], textarea { width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
 .weights { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; }
 .weights td { padding: 5px 0; border-bottom: 1px solid var(--line); }
 .weights td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
@@ -150,7 +150,14 @@ dialog h3 { font-size: 20px; }
 .area-form { display: flex; gap: 8px; }
 .area-form input { flex: 1; }
 .area-results { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
-.area-results button { text-align: left; border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 8px 10px; font-size: 14px; }
+.area-results button { text-align: left; border: 1px solid var(--line); background: var(--bg); border-radius: 10px; padding: 8px 10px; font-size: 14px; display: flex; flex-direction: column; gap: 1px; }
+.area-results button small { color: var(--muted); font-size: 12px; }
+.area-results button:focus-visible, .area-results button.active { outline: 2px solid var(--accent); outline-offset: 1px; }
+.btn.geo { width: 100%; }
+.or { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 12px; margin: 10px 0 8px; }
+.or::before, .or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.card.beyond { border-style: dashed; }
+.more-link { display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center; text-decoration: none; color: var(--accent); background: var(--surface); border: 1px dashed var(--accent); border-radius: var(--radius); padding: 14px; font-weight: 600; font-size: 14px; }
 .area-results .muted { margin: 0; }
 
 .badge { display: inline-flex; align-items: center; gap: 4px; }
