@@ -653,7 +653,7 @@
     bind();
     renderControls();
     try {
-      const res = await fetch("data/cafes.json", { cache: "no-store" });
+      const res = await fetch("data/cafes.json?t=" + Date.now(), { cache: "no-store" });
       const data = await res.json();
       state.cafes = data.cafes;
       $("#updated").textContent = data.updated.split("-").reverse().join("/");

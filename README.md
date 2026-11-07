@@ -22,3 +22,7 @@ Web gợi ý quán cafe để làm việc cho hai người: một người ở H
 ## Cập nhật đề xuất
 
 Bảo Claude đọc sheet feedback. Claude sẽ chỉnh trọng số mặc định trong `app.js`, cập nhật đặc điểm từng quán và thêm quán được gợi ý.
+
+## Khi cập nhật code
+
+Đổi giá trị `?v=` của `style.css`, `config.js`, `app.js` trong `index.html` mỗi lần sửa các file này, để trình duyệt không dùng bản cũ trong bộ nhớ đệm.
