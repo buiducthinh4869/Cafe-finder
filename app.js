@@ -16,10 +16,10 @@
     ban_rong:   { label: "bàn rộng",        w: 0.12 },
     coworking:  { label: "chuyên làm việc", w: 0.06 },
     view_ho:    { label: "view hồ",         w: 0.05 },
-    o_dien:     { label: "nhiều ổ điện",    w: 0.03 },
-    wifi:       { label: "wifi tốt",        w: 0.03 },
+    o_dien:     { label: "nhiều ổ điện",    w: 0.05 },
+    wifi:       { label: "wifi tốt",        w: 0.05 },
     dieu_hoa:   { label: "có điều hòa",     w: 0.03 },
-    do_uong:    { label: "đồ uống ngon",    w: 0.02 },
+    do_uong:    { label: "đồ uống ngon",    w: 0.03 },
     ngoai_troi: { label: "chủ yếu ngoài trời", w: -0.04 },
     dong:       { label: "hay đông",        w: -0.12 },
     ban_chat:   { label: "bàn hoặc chỗ chật", w: -0.15 },
@@ -35,7 +35,7 @@
   ];
   const CHIPS_NEG = [
     ["dong", "Đông"], ["mat_duong", "Ồn"], ["ban_chat", "Bàn chật"], ["wifi_yeu", "Wifi yếu"],
-    ["nong", "Nóng"], ["do_uong_do", "Đồ uống dở"], ["xa", "Xa quá"]
+    ["nong", "Nóng"], ["do_uong_do", "Đồ uống dở"], ["xa", "Xa, không đáng đi"]
   ];
   const OPPOSITE = { rong: "ban_chat", ban_chat: "rong", vang: "dong", dong: "vang", wifi: "wifi_yeu", wifi_yeu: "wifi", do_uong: "do_uong_do", do_uong_do: "do_uong", dieu_hoa: "nong", nong: "dieu_hoa" };
 
@@ -227,7 +227,7 @@
     }
     if (sig && sig.chips.xa) s -= 0.04 * sig.chips.xa * (ctx.near ? 1 : 0.3);
 
-    s -= ctx.near ? 0.025 * c.km : 0.004 * c.km;
+    s -= ctx.near ? 0.025 * c.km : 0.002 * c.km; // quãng đường xa không phải điểm trừ lớn khi quán đúng gu
     if (!c.visited && !(sig && sig.stars.length)) s += 0.02; // khuyến khích thử quán mới
 
     parts.sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));

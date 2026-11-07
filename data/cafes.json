@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06",
+ "updated": "2026-11-07",
  "cafes": [
   {
    "id": "ChIJ2zAtSyKrNTERCua8ALatGRE",
@@ -396,15 +396,19 @@
     "hợp freelancer",
     "khu hút thuốc riêng"
    ],
-   "note": "Lựa chọn làm việc tốt nhất ở Ecopark. Cà phê bị chê nhạt. Thứ Ba đóng sớm.",
+   "note": "Lựa chọn làm việc tốt nhất ở Ecopark. Thứ Ba đóng sớm (16:00).",
    "features": [
+    "ban_rong",
+    "do_uong",
+    "o_dien",
     "rong",
     "vang",
+    "view_ho",
     "wifi"
    ],
-   "visited": false,
-   "myScore": null,
-   "myNote": "",
+   "visited": true,
+   "myScore": 10,
+   "myNote": "Đi ngày 07/11/2026. Rất đúng gu: rộng, bàn rộng, nhiều ổ điện, wifi tốt, view đẹp, đồ uống ngon. 22 km nhưng hoàn toàn xứng đáng.",
    "source": "claude"
   },
   {
