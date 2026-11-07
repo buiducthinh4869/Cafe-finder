@@ -100,7 +100,8 @@
     mode: LS.get("cf_mode", "hotay"),
     origin: LS.get("cf_origin", "hotay"),
     ranges: LS.get("cf_ranges", {}),
-    custom: LS.get("cf_custom", null),
+    custom: null,          // không nhớ địa điểm cũ: mỗi lần mở lấy vị trí hiện tại
+    locating: false,
     openNow: false, onlyNew: false, showHidden: false,
     remoteOk: false
   };
@@ -291,7 +292,7 @@
     const list = $("#list");
     const m = MODES[state.mode];
     if (needArea) {
-      list.replaceChildren(el("p", { class: "empty" }, el("img", { src: "cat.svg", alt: "" }), "Bấm Tìm quanh vị trí của tôi, hoặc gõ một địa điểm bất kỳ ở Hà Nội."));
+      list.replaceChildren(el("p", { class: "empty" }, el("img", { src: "cat.svg", alt: "" }), state.locating ? "Đang lấy vị trí của bạn…" : "Bấm Tìm quanh vị trí của tôi, hoặc gõ một địa điểm bất kỳ ở Hà Nội."));
     } else if (!rows.length) {
       list.replaceChildren(el("p", { class: "empty" }, el("img", { src: "cat.svg", alt: "" }), "Không có quán nào khớp bộ lọc. Thử bỏ bớt bộ lọc hoặc kéo bán kính rộng hơn."), mapsMore(origin));
     } else {
@@ -403,9 +404,23 @@
     flush();
   }
 
+  function locateMe() {
+    if (!navigator.geolocation) { toast("Trình duyệt không hỗ trợ định vị. Hãy gõ một địa điểm."); return; }
+    if (state.locating) return;
+    state.locating = true; renderList();
+    navigator.geolocation.getCurrentPosition(
+      p => {
+        state.locating = false;
+        if (!inHN(p.coords.latitude, p.coords.longitude)) { renderList(); toast("Vị trí hiện tại nằm ngoài Hà Nội. Hãy gõ một địa điểm."); return; }
+        setCustom("vị trí của bạn", p.coords.latitude, p.coords.longitude);
+      },
+      () => { state.locating = false; renderList(); toast("Chưa lấy được vị trí. Hãy cho phép truy cập vị trí hoặc gõ một địa điểm."); },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+    );
+  }
+
   function setCustom(name, lat, lng) {
     state.custom = { name, lat: +lat, lng: +lng };
-    LS.set("cf_custom", state.custom);
     $("#areaResults").replaceChildren();
     $("#areaInput").value = "";
     renderControls(); renderList();
@@ -588,6 +603,7 @@
   function bind() {
     document.querySelectorAll(".mode").forEach(b => b.addEventListener("click", () => {
       state.mode = b.dataset.mode; LS.set("cf_mode", state.mode); renderControls(); renderList();
+      if (state.mode === "khac" && !state.custom) locateMe();
     }));
     $("#range").addEventListener("input", e => {
       state.ranges[state.mode] = +e.target.value; LS.set("cf_ranges", state.ranges);
@@ -620,18 +636,7 @@
       await searchArea(q, true);
       if (areaItems.length === 1) setCustom(areaItems[0].name, areaItems[0].lat, areaItems[0].lng);
     });
-    $("#geoBtn").addEventListener("click", () => {
-      if (!navigator.geolocation) { toast("Trình duyệt không hỗ trợ định vị."); return; }
-      toast("Đang lấy vị trí…");
-      navigator.geolocation.getCurrentPosition(
-        p => {
-          if (!inHN(p.coords.latitude, p.coords.longitude)) { toast("Vị trí hiện tại nằm ngoài Hà Nội."); return; }
-          setCustom("Vị trí của bạn", p.coords.latitude, p.coords.longitude);
-        },
-        () => toast("Không lấy được vị trí. Hãy cho phép truy cập vị trí hoặc gõ tên khu vực."),
-        { enableHighAccuracy: true, timeout: 10000 }
-      );
-    });
+    $("#geoBtn").addEventListener("click", () => locateMe());
     $("#openNow").addEventListener("change", e => { state.openNow = e.target.checked; renderList(); });
     $("#onlyNew").addEventListener("change", e => { state.onlyNew = e.target.checked; renderList(); });
     $("#showHidden").addEventListener("change", e => { state.showHidden = e.target.checked; renderList(); });
@@ -660,8 +665,10 @@
       $("#list").replaceChildren(el("p", { class: "empty" }, "Không tải được danh sách quán."));
       return;
     }
+    try { localStorage.removeItem("cf_custom"); } catch (e) { /* bỏ qua */ }
     mergeFeedback([]);
     renderList();
+    if (state.mode === "khac") locateMe();
     renderSync();
     const remote = await loadRemote();
     mergeFeedback(remote);
