@@ -272,7 +272,9 @@
     $("#rangeOut").textContent = fmtKm(+r.value);
     $("#originRow").hidden = m.near;
     $("#areaRow").hidden = state.mode !== "khac";
-    $("#khacSub").textContent = state.custom ? state.custom.name : "vị trí bất kỳ";
+    const now = $("#areaNow");
+    now.hidden = !state.custom;
+    now.textContent = state.custom ? "Đang tìm quanh: " + state.custom.name : "";
     document.querySelectorAll("#originSeg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.origin === state.origin)));
   }
 

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261107c">
+  <link rel="stylesheet" href="style.css?v=20261107d">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
 </head>
 <body>
@@ -38,7 +38,6 @@
         <button class="mode" data-mode="khac" role="tab">
           <span class="mode-ico" aria-hidden="true">📍</span>
           <span class="mode-title">Quanh đây</span>
-          <span class="mode-sub" id="khacSub">vị trí bất kỳ</span>
         </button>
         <button class="mode" data-mode="xa" role="tab">
           <span class="mode-ico" aria-hidden="true">🌿</span>
@@ -48,6 +47,7 @@
       </div>
 
       <div class="area" id="areaRow" hidden>
+        <p class="area-now" id="areaNow" hidden></p>
         <button class="btn primary geo" id="geoBtn" type="button">📍 Tìm quanh vị trí của tôi</button>
         <div class="or"><span>hoặc gõ địa điểm</span></div>
         <form id="areaForm" class="area-form" autocomplete="off">
@@ -119,7 +119,7 @@
 
   <div class="toast" id="toast" role="status"></div>
 
-  <script src="config.js?v=20261107c"></script>
-  <script src="app.js?v=20261107c"></script>
+  <script src="config.js?v=20261107d"></script>
+  <script src="app.js?v=20261107d"></script>
 </body>
 </html>

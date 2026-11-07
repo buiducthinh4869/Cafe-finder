@@ -174,3 +174,5 @@ dialog h3 { font-size: 20px; }
 @media (prefers-reduced-motion: reduce) { .hero-cat { animation: none; } }
 .empty img { display: block; width: 96px; margin: 0 auto 8px; opacity: .9; }
 @media (max-width: 420px) { .hero-cat { width: 108px; } }
+
+.area-now { margin: 0 0 10px; font-size: 14px; font-weight: 600; }
