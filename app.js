@@ -280,7 +280,7 @@
     const good = c.parts.filter(p => p[1] > 0).slice(0, 3).map(p => FEATURES[p[0]].label);
     const bad = c.parts.filter(p => p[1] < 0).slice(0, 2).map(p => FEATURES[p[0]].label);
     const bits = [];
-    if (c.myScore) bits.push("hai bạn từng chấm " + String(c.myScore).replace(".", ",") + "/10");
+    if (c.myScore) bits.push("đã được chấm " + String(c.myScore).replace(".", ",") + "/10");
     if (good.length) bits.push(good.join(", "));
     let t = bits.length ? "Gợi ý vì: " + bits.join("; ") + "." : "";
     if (bad.length) t += " Lưu ý: " + bad.join(", ") + ".";
@@ -350,7 +350,7 @@
       el("div", { class: "badges" }, badges),
       el("p", { class: "why" }, reasonText(c)),
       c.note ? el("p", { class: "note" }, c.note) : null,
-      c.myNote ? el("p", { class: "note" }, "Ghi chú của hai bạn: " + c.myNote) : null,
+      c.myNote ? el("p", { class: "note" }, "Ghi chú: " + c.myNote) : null,
       fbs.length ? el("div", { class: "fb-list" }, fbs.map(f =>
         el("p", {}, `${f.who ? f.who + ": " : ""}${f.stars ? "★".repeat(+f.stars) : ""} ${(f.chips || []).map(chipLabel).join(", ")}${f.note ? " · " + f.note : ""}`))) : null,
       el("div", { class: "actions" },
@@ -379,7 +379,7 @@
       });
     $("#modelBody").replaceChildren(
       el("p", { class: "muted" }, `Điểm hợp = mức phù hợp để làm việc + điểm Google + cộng trừ theo đặc điểm dưới đây − khoảng cách. ` +
-        `Feedback hai bạn chấm cao làm tăng trọng số đặc điểm của quán đó, chấm thấp thì giảm. Đã có ${n} feedback.`),
+        `Feedback chấm cao làm tăng trọng số đặc điểm của quán đó, chấm thấp thì giảm. Đã có ${n} feedback.`),
       el("table", { class: "weights" }, el("tbody", {}, rowsW))
     );
   }
@@ -493,7 +493,7 @@
   function renderSync() {
     const bar = $("#syncBar");
     const pending = LS.get("cf_pending", []).length;
-    if (!window.CAFE_CONFIG || !window.CAFE_CONFIG.SCRIPT_URL) bar.textContent = "Feedback đang lưu trên máy này. Kết nối Google Sheet để hai bạn dùng chung.";
+    if (!window.CAFE_CONFIG || !window.CAFE_CONFIG.SCRIPT_URL) bar.textContent = "Feedback đang lưu trên máy này. Kết nối Google Sheet để mọi người dùng chung.";
     else if (!state.remoteOk) bar.textContent = "Chưa tải được feedback từ Google Sheet. Feedback mới vẫn lưu trên máy.";
     else bar.textContent = pending ? `Đang chờ gửi ${pending} feedback lên Google Sheet.` : "Feedback đã đồng bộ với Google Sheet.";
   }
