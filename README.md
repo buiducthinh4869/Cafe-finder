@@ -26,3 +26,5 @@ Bảo Claude đọc sheet feedback. Claude sẽ chỉnh trọng số mặc đị
 ## Khi cập nhật code
 
 Đổi giá trị `?v=` của `style.css`, `config.js`, `app.js` trong `index.html` mỗi lần sửa các file này, để trình duyệt không dùng bản cũ trong bộ nhớ đệm.
+
+Giờ mở cửa trong `data/cafes.json` ghi theo dạng 24 giờ, ví dụ `7:00–22:00` hoặc `Mở 24h`. Không dùng am/pm.
